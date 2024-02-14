@@ -7,3 +7,6 @@
 auto-save-list
 tramp
 .\#*
+
+backend/githubsso.json
+node_modules
