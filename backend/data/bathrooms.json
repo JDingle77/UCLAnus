@@ -1,0 +1,9 @@
+[{
+  "bathroom_id": 1,
+  "address": "123 bruh st.",
+  "building": "Boelter Hall",
+  "floor": 5,
+  "genders": ["all gender"],
+  "rating": null,
+  "photos": []
+}]

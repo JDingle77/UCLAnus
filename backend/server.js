@@ -20,7 +20,7 @@ app.use(
   })
 );
 
-var db = require("./mongo.js");
+require("./mongo.js");
 const { MinKey } = require("mongodb");
 
 app.listen(port, () => {
