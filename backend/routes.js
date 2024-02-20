@@ -7,7 +7,7 @@ const port = process.env.PORT || 4000;
 
 app.use(express.json());
 
-app.get("/get-bathroom/:bathroomId", bathroomController.getBathroomInfo);
+app.get("/get-bathroom", bathroomController.getBathroomInfo);
 // Add more routes as needed...
 
 app.listen(port, () => {
