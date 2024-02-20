@@ -2,14 +2,9 @@
 
 const express = require("express");
 const bathroomController = require("./api/bathroom"); // Import the controller
-const app = express();
-const port = process.env.PORT || 4000;
+const router = express.Router();
 
-app.use(express.json());
-
-app.get("/get-bathroom", bathroomController.getBathroomInfo);
+router.get("/get-bathroom", bathroomController.getBathroomInfo);
 // Add more routes as needed...
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+module.exports = router;

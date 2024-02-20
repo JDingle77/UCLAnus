@@ -1,19 +1,11 @@
 // bathroom.js
-
-const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb://localhost:27017/";
+const db = require("../mongo.js");
 
 // Function to get bathroom information
 const getBathroomInfo = async (req, res) => {
   const bathroomId = req.query.bathroomId;
-  let client; // Declare client outside the try block
 
   try {
-    client = await MongoClient.connect(url, {
-      useNewUrlParser: true,
-    });
-
-    const db = client.db("uclanus");
     const bathroomCollection = db.collection("bathrooms");
 
     if (bathroomId) {
@@ -40,11 +32,6 @@ const getBathroomInfo = async (req, res) => {
   } catch (error) {
     console.error("Error getting bathroom info:", error);
     res.status(500).json({ message: "Internal server error" });
-  } finally {
-    // Close the MongoDB client in the finally block
-    if (client) {
-      client.close();
-    }
   }
 };
 
