@@ -1,10 +1,11 @@
+// server.js
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
 const routes = require("./routes");
-
 const axios = require("axios");
+const { connectToDatabase, setup } = require("./mongo.js");
 
 let { clientID, clientSecret, apiToken } = require("./githubsso.json");
 
@@ -18,14 +19,31 @@ app.use(
     credentials: true,
   })
 );
-app.use("/", routes);
 
 require("./mongo.js");
 const { MinKey } = require("mongodb");
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+    // Set up the database (seed data, etc.)
+    await setup(db);
+
+    // Assign the connected database instance to a variable
+    app.locals.db = db;
+
+    // Use the connected database in your routes
+    app.use("/", routes);
+
+    // Start the server
+    app.listen(port, () => {
+      console.log(`Server is running on port: ${port}`);
+    });
+  } catch (error) {
+    console.error("Error setting up and starting the server:", error);
+    process.exit(1); // Terminate the application if there is an error setting up the server
+  }
+};
+
+// Call the async function to start the server
+startServer();
 
 app.post("/login", async function (req, res) {
   if (req.cookies && req.cookies.token && req.cookies.token !== "undefined") {
@@ -62,6 +80,7 @@ app.post("/login", async function (req, res) {
     }
   });
 });
+
 app.get("/get-userid", function (req, res) {
   if (
     !Object.prototype.hasOwnProperty.call(req.cookies, "token") ||

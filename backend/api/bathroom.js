@@ -1,13 +1,13 @@
 // bathroom.js
-const db = require("../mongo.js");
+const { connectToDatabase } = require("../mongo.js");
 
 // Function to get bathroom information
 const getBathroomInfo = async (req, res) => {
   const bathroomId = req.query.bathroomId;
 
   try {
+    const db = await connectToDatabase();
     const bathroomCollection = db.collection("bathrooms");
-
     if (bathroomId) {
       // If bathroomId is provided, retrieve information for the specific bathroom
       const bathroomInfo = await bathroomCollection.findOne({
