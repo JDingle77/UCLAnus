@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
+import NavBarComponent from "../Components/NavBarComponent";
 import Cookies from "js-cookie";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -61,6 +61,7 @@ function Homepage() {
   });
   return (
     <span>
+	  <NavBarComponent/>
       <a
         id="github-sign-in"
         href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}

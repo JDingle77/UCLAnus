@@ -1,0 +1,66 @@
+/* custom-navbar.css */
+
+.text-on-image {
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-on-image h3 {
+  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.my-account {
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+/* Adjust the height of the Navbar */
+.navbar {
+  height: 128px; /* Change the height value according to your needs */
+}
+
+/* Adjust the height of the Navbar brand */
+.navbar-brand {
+  position: relative;
+  height: inherit; /* Inherit the height from the Navbar */
+  padding: 0; /* Optionally reset padding */
+}
+
+/* Adjust the height of Navbar links */
+.navbar-nav .nav-link {
+  line-height: 80px; /* Adjust line-height to vertically center the text */
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-rectangle {
+  position: absolute;
+  width: 100%;
+  left: 0%;
+  right: 11.37%;
+  top: 35.16%;
+  bottom: 63.46%;
+  background: #333333;
+}
+
+.bottom-rectangle {
+  position: absolute;
+  width: 100%;
+  left: 0%;
+  right: 11.37%;
+  top: 64.24%;
+  bottom: 34.38%;
+  background: #333333;
+}
+
