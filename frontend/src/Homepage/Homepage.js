@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import NavBarComponent from "../Components/NavBarComponent";
-import Cookies from "js-cookie";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 let client_id = "51e5efa586842061de57";
