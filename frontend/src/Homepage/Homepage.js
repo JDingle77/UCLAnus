@@ -71,6 +71,7 @@ function Homepage() {
       </a>
 
       <span>{userID !== undefined ? <b> {userID}</b> : <></>} </span>
+    <MapComponent/>
     </span>
   );
 }
