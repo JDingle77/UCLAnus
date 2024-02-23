@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./NavBarComponent.css";
-import PoopEmoji from "./Images/poop.png";
+import PoopEmoji from "../Images/poop.png";
 
 function NavBarComponent() {
   return (
