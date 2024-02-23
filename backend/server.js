@@ -20,8 +20,10 @@ app.use(
   })
 );
 
-require("./mongo.js");
-const { MinKey } = require("mongodb");
+const startServer = async () => {
+  try {
+    // Connect to the database
+    const db = await connectToDatabase(); // No need to pass the database name here
 
     // Set up the database (seed data, etc.)
     await setup(db);
