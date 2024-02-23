@@ -1,0 +1,9 @@
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating p {
+    margin-left: 4px;
+    margin-bottom: 0;
+}

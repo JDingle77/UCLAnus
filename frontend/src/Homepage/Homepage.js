@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import NavBarComponent from "../Components/NavBarComponent";
-import Cookies from "js-cookie";
+import NavBarComponent from "../Components/NavBarComponent/NavBarComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SearchResults from "../Components/SearchResults/SearchResults";
 
 let client_id = "51e5efa586842061de57";
 let scopes = "read:user read:org repo";
@@ -62,6 +62,7 @@ function Homepage() {
   return (
     <span>
 	  <NavBarComponent/>
+    <SearchResults/>
       <a
         id="github-sign-in"
         href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}
