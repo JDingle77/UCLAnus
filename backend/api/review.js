@@ -1,5 +1,6 @@
 // review.js
 const { connectToDatabase } = require("../mongo.js");
+const { v4: uuidv4 } = require("uuid");
 
 // Function to get review information
 const getReviewInfo = async (req, res) => {
@@ -54,6 +55,7 @@ const addReview = async (req, res) => {
 
     const db = await connectToDatabase();
     const reviewCollection = db.collection("reviews");
+    const bathroomCollection = db.collection("bathrooms");
 
     // Generate a unique review_id (you may use a library or your own logic)
     const reviewId = generateUniqueReviewId(); // Replace with your actual function
@@ -64,7 +66,7 @@ const addReview = async (req, res) => {
       bathroom_id: bathroomId,
       user_id: userId,
       rating: rating,
-      description: description || "", // optional description field
+      description: description || "",
     };
 
     // Insert the new review into the collection
@@ -72,9 +74,28 @@ const addReview = async (req, res) => {
 
     // Check if the insertion was successful
     if (result.insertedCount === 1) {
+      const reviewsForBathroom = await reviewCollection
+        .find({ bathroom_id: bathroomId })
+        .toArray();
+      const totalReviews = reviewsForBathroom.length;
+      const totalRating = reviewsForBathroom.reduce(
+        (sum, review) => sum + review.rating,
+        0
+      );
+      const averageRating = totalReviews > 0 ? totalRating / totalReviews : 0;
+      const updatedBathroom = await bathroomCollection.findOneAndUpdate(
+        { bathroom_id: bathroomId },
+        { $set: { average_rating: averageRating } },
+        { returnDocument: "after" }
+      );
+
       res
         .status(201)
-        .json({ message: "Review added successfully", review: newReview });
+        .json({
+          message: "Review added successfully",
+          review: newReview,
+          updatedBathroom,
+        });
     } else {
       res.status(500).json({ message: "Failed to add review" });
     }
@@ -84,11 +105,9 @@ const addReview = async (req, res) => {
   }
 };
 
-// Function to generate a unique review_id (example, replace with your own logic)
+// Function to generate a unique review_id
 function generateUniqueReviewId() {
-  // Replace this with your own logic to generate a unique ID
-  // You can use a library like 'uuid' or any other method that ensures uniqueness
-  return Math.floor(Math.random() * 1000) + 1;
+  return uuidv4();
 }
 
 module.exports = {
