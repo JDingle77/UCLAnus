@@ -4,6 +4,7 @@ import NavBarComponent from "../Components/NavBarComponent/NavBarComponent";
 import MapComponent from "../Components/MapComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SearchResults from "../Components/SearchResults/SearchResults";
+import "./Homepage.css";
 
 let client_id = "51e5efa586842061de57";
 let scopes = "read:user read:org repo";
@@ -74,14 +75,10 @@ function Homepage() {
       <div
         style={{
           display: "flex",
-          flex: "2",
-          flexDirection: "row",
-          width: "100%",
-          height: "100%",
+          height: 850,
         }}
       >
-        <SearchResults />
-
+        <SearchResults className="search-results" />
         <MapComponent />
       </div>
     </span>
