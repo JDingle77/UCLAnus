@@ -10,7 +10,7 @@ import RestroomRating from "../../RestroomRating/RestroomRating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-function SearchResult() {
+function SearchResult(props) {
   const rightArrow = <FontAwesomeIcon icon={faArrowRight} />;
   return (
     <div className="search-result-card">
@@ -22,11 +22,11 @@ function SearchResult() {
             className="bathroom-img"
           />
           <div className="address">
-            <h2 className="subtitle bathroom-name">Semel 3rd</h2>
+              <h2 className="subtitle bathroom-name">{props.data.building + " " + props.data.floor}</h2>
             <RestroomRating />
             <p>
               <img src={PinEmoji} alt="pin" />{" "}
-              <Badge bg="primary">Semel Institute</Badge>
+		<Badge bg="primary">{props.data.address}</Badge>
             </p>
           </div>
         </div>

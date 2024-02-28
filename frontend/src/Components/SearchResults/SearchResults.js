@@ -5,7 +5,9 @@ import { Popup } from "reactjs-popup";
 import { Slider } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import axios from 'axios';
+
 function SearchResults() {
     const marks = [
 	{
@@ -42,11 +44,55 @@ function SearchResults() {
 	setMaxDistance(event.target.value);
     }
 
-    const [hasBagHooks, setBagHooks] = useState(false);
-    function updateBagHooks(event) {
+    const [isMale, setIsMale] = useState(true);
+    function updateMale(event) {
 	console.log("Set to " + event.target.checked);
-	setBagHooks(event.target.checked);
+	setIsMale(event.target.checked);
+    } 
+
+    const [isFemale, setIsFemale] = useState(true);
+    function updateFemale(event) {
+	console.log("Set to " + event.target.checked);
+	setIsFemale(event.target.checked);
     }
+
+    const [isGenderNeutral, setIsGenderNeutral] = useState(true);
+    function updateGenderNeutral(event) {
+	console.log("Set to " + event.target.checked);
+	setIsGenderNeutral(event.target.checked);
+    }
+
+    const [bathrooms, setBathrooms] = useState([]);
+    function getBathrooms() {
+	axios.get('http://localhost:4000/get-bathroom')
+	    .then(response => {
+		setBathrooms(response.data);
+	    })
+	    .catch(error => {
+		console.error(error);
+	    });
+    }
+
+    useEffect(() => {
+	getBathrooms();
+    }, []);
+
+    function isBathroomGood(bathroom) {
+	if (bathroom.rating == null || bathroom.rating >= minRating) {
+	    //if something about bathroom distsance
+	    if (isMale && bathroom.genders.indexOf("male") > -1) {
+		return true;
+	    }
+	    if (isFemale && bathroom.genders.indexOf("female") > -1) {
+		return true;
+	    }
+	    if (isGenderNeutral && bathroom.genders.indexOf("all gender") > -1) {
+		return true;
+	    }
+	}
+	return false;
+    }
+    
     return (
 	<div>
 	    <Popup  contentStyle={{display: 'flex', marginRight: "0px", paddingRight: "0px", float: "right", height: "100%"}} trigger={<button> Trigger </button>}  className={"popup-content"} modal>
@@ -61,16 +107,34 @@ function SearchResults() {
 			<Slider min={0} max={5} step={0.001} valueLabelDisplay="off" marks={marks2} defaultValue={maxDistance} onChange={updateMaxDistance}/>
 			<hr style={{color: 'black'}}/>
 			<div>
-			    <FormControlLabel control={<Checkbox onChange={check} checked={hasBagHooks} onChange={updateBagHooks}/>} label="Bag Hooks" />
+			    <div style={{textAlign: "center"}}> Gender </div>
+			    <div>
+				<FormControlLabel control={<Checkbox checked={isMale} onChange={updateMale}/>} label="Male" />
+			    </div>
+			    <div>
+				<FormControlLabel control={<Checkbox checked={isFemale} onChange={updateFemale}/>} label="Female" />
+			    </div>
+			    <div>
+				<FormControlLabel control={<Checkbox checked={isGenderNeutral} onChange={updateGenderNeutral}/>} label="Gender Neutral" />
+			    </div>
+
+
 			</div>
 		    </div>
 		</div>
 	    </Popup>
 	    <div className="search-results">
 		<div>
-		    <SearchResult />
-		    <SearchResult />
-		    <SearchResult />
+		    {
+			bathrooms.map(bathroom => {
+			    if (isBathroomGood(bathroom)) {
+				console.log("Props: ");
+				console.log(bathroom);
+				return <SearchResult data={bathroom}/>;
+			    }
+			    return null;
+			})
+		    }
 		</div>
 	    </div>
 	</div>
