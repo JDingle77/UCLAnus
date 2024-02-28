@@ -62,7 +62,7 @@ function Homepage() {
     getUserID();
   });
   return (
-    <span>
+    <div className="home-page">
       <NavBarComponent />
       <a
         id="github-sign-in"
@@ -72,16 +72,11 @@ function Homepage() {
       </a>
 
       <span>{userID !== undefined ? <b> {userID}</b> : <></>} </span>
-      <div
-        style={{
-          display: "flex",
-          height: 850,
-        }}
-      >
+      <div className="content">
         <SearchResults className="search-results" />
         <MapComponent />
       </div>
-    </span>
+    </div>
   );
 }
 
