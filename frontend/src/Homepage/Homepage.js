@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import NavBarComponent from "../Components/NavBarComponent/NavBarComponent";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import MapComponent from "../Components/MapComponent";
+import "bootstrap/dist/css/bootstrap.min.css";
 import SearchResults from "../Components/SearchResults/SearchResults";
 
 let client_id = "51e5efa586842061de57";
@@ -61,8 +62,7 @@ function Homepage() {
   });
   return (
     <span>
-	  <NavBarComponent/>
-    <SearchResults/>
+      <NavBarComponent />
       <a
         id="github-sign-in"
         href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}
@@ -71,7 +71,19 @@ function Homepage() {
       </a>
 
       <span>{userID !== undefined ? <b> {userID}</b> : <></>} </span>
-    <MapComponent/>
+      <div
+        style={{
+          display: "flex",
+          flex: "2",
+          flexDirection: "row",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <SearchResults />
+
+        <MapComponent />
+      </div>
     </span>
   );
 }
