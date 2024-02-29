@@ -71,9 +71,10 @@ const addReview = async (req, res) => {
 
     // Insert the new review into the collection
     const result = await reviewCollection.insertOne(newReview);
+    console.log("Result of insertOne:", result);
 
     // Check if the insertion was successful
-    if (result.insertedCount === 1) {
+    if (result.acknowledged) {
       const reviewsForBathroom = await reviewCollection
         .find({ bathroom_id: bathroomId })
         .toArray();
@@ -85,17 +86,17 @@ const addReview = async (req, res) => {
       const averageRating = totalReviews > 0 ? totalRating / totalReviews : 0;
       const updatedBathroom = await bathroomCollection.findOneAndUpdate(
         { bathroom_id: bathroomId },
-        { $set: { average_rating: averageRating } },
+        { $set: { rating: averageRating } },
         { returnDocument: "after" }
       );
+      console.log("Average rating calculated:", averageRating);
+      console.log("Bathroom updated successfully:", updatedBathroom);
 
-      res
-        .status(201)
-        .json({
-          message: "Review added successfully",
-          review: newReview,
-          updatedBathroom,
-        });
+      res.status(201).json({
+        message: "Review added successfully",
+        review: newReview,
+        updatedBathroom,
+      });
     } else {
       res.status(500).json({ message: "Failed to add review" });
     }
