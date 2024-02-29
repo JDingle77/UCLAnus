@@ -4,8 +4,8 @@ const { v4: uuidv4 } = require("uuid");
 
 // Function to get review information
 const getReviewInfo = async (req, res) => {
-  const bathroomId = req.query.bathroomId;
-  const userId = req.query.userId;
+  const bathroomId = parseInt(req.query.bathroomId, 10);
+  const userId = parseInt(req.query.userId, 10);
 
   try {
     const db = await connectToDatabase();
@@ -49,7 +49,7 @@ const addReview = async (req, res) => {
     // Validate that required fields are provided
     if (!bathroomId || !userId || !rating) {
       return res.status(400).json({
-        message: "BathroomId, userId, and rating are required fields.",
+        message: "bathroomId, userId, and rating are required fields.",
       });
     }
 
@@ -57,8 +57,7 @@ const addReview = async (req, res) => {
     const reviewCollection = db.collection("reviews");
     const bathroomCollection = db.collection("bathrooms");
 
-    // Generate a unique review_id (you may use a library or your own logic)
-    const reviewId = generateUniqueReviewId(); // Replace with your actual function
+    const reviewId = generateUniqueReviewId();
 
     // Create a new review document
     const newReview = {
@@ -71,10 +70,9 @@ const addReview = async (req, res) => {
 
     // Insert the new review into the collection
     const result = await reviewCollection.insertOne(newReview);
-    console.log("Result of insertOne:", result);
 
     // Check if the insertion was successful
-    if (result.acknowledged) {
+    if (result.insertedId) {
       const reviewsForBathroom = await reviewCollection
         .find({ bathroom_id: bathroomId })
         .toArray();
@@ -89,8 +87,6 @@ const addReview = async (req, res) => {
         { $set: { rating: averageRating } },
         { returnDocument: "after" }
       );
-      console.log("Average rating calculated:", averageRating);
-      console.log("Bathroom updated successfully:", updatedBathroom);
 
       res.status(201).json({
         message: "Review added successfully",
