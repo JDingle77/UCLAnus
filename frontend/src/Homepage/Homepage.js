@@ -4,6 +4,7 @@ import NavBarComponent from "../Components/NavBarComponent/NavBarComponent";
 import MapComponent from "../Components/MapComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SearchResults from "../Components/SearchResults/SearchResults";
+import "./Homepage.css";
 
 let client_id = "51e5efa586842061de57";
 let scopes = "read:user read:org repo";
@@ -61,7 +62,7 @@ function Homepage() {
     getUserID();
   });
   return (
-    <span>
+    <div className="home-page">
       <NavBarComponent />
       <a
         id="github-sign-in"
@@ -71,20 +72,11 @@ function Homepage() {
       </a>
 
       <span>{userID !== undefined ? <b> {userID}</b> : <></>} </span>
-      <div
-        style={{
-          display: "flex",
-          flex: "2",
-          flexDirection: "row",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <SearchResults />
-
+      <div className="content">
+        <SearchResults className="search-results" />
         <MapComponent />
       </div>
-    </span>
+    </div>
   );
 }
 
