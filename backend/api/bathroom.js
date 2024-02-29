@@ -3,7 +3,7 @@ const { connectToDatabase } = require("../mongo.js");
 
 // Function to get bathroom information
 const getBathroomInfo = async (req, res) => {
-  const bathroomId = req.query.bathroomId;
+  const bathroomId = parseInt(req.query.bathroomId, 10);
 
   try {
     const db = await connectToDatabase();

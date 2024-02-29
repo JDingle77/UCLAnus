@@ -1,9 +1,23 @@
 [{
   "bathroom_id": 1,
   "address": "123 bruh st.",
+  "latitude": 34.054000,
+  "longitude": -118.409010,
   "building": "Boelter Hall",
   "floor": 5,
   "genders": ["all gender"],
   "rating": null,
   "photos": []
-}]
+},
+{
+  "bathroom_id": 2,
+  "address": "123 yeet ave",
+  "latitude": 34.054000,
+  "longitude": -118.409010,
+  "building": "Boelter Hall",
+  "floor": 3,
+  "genders": ["male"],
+  "rating": null,
+  "photos": []
+}
+]
