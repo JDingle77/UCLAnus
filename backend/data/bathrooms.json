@@ -12,11 +12,22 @@
 {
   "bathroom_id": 2,
   "address": "123 yeet ave",
-  "latitude": 34.054000,
-  "longitude": -118.409010,
+  "latitude": 34.069021,
+  "longitude": -118.443083,
   "building": "Boelter Hall",
   "floor": 3,
   "genders": ["male"],
+  "rating": null,
+  "photos": []
+},
+{
+  "bathroom_id": 3,
+  "address": "330 De Neve Dr, Los Angeles, CA 90095",
+  "latitude": 34.0726165,
+  "longitude": -118.4501264,
+  "building": "Covel Commons",
+  "floor": 3,
+  "genders": ["male", "female"],
   "rating": null,
   "photos": []
 }

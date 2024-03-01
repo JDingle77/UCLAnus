@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import NavBarComponent from "../Components/NavBarComponent/NavBarComponent";
-import MapComponent from "../Components/MapComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SearchResults from "../Components/SearchResults/SearchResults";
 import "./Homepage.css";
@@ -72,10 +71,7 @@ function Homepage() {
       </a>
 
       <span>{userID !== undefined ? <b> {userID}</b> : <></>} </span>
-      <div className="content">
-        <SearchResults className="search-results" />
-        <MapComponent />
-      </div>
+      <SearchResults className="search-results" />
     </div>
   );
 }

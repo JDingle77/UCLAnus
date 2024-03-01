@@ -1,25 +1,75 @@
+import "./MapComponent.css";
+import React from 'react';
 import Container from "react-bootstrap/Container";
+import {APIProvider, Map, Marker, Overlay, useMarkerRef, InfoWindow } from '@vis.gl/react-google-maps';
+import { useState } from 'react';
+let { mapsApiKey, mapsSignature } = require("./mapsapikey.json");
 
-let { mapsApiKey } = require("./mapsapikey.json");
+const libraries = ['places']
+// defaults
 
-function BasicExample() {
-  let maps_src =
-    "https://www.google.com/maps/embed/v1/place?key=" +
-    mapsApiKey +
-    "&q=Eiffel+Tower,Paris+France";
+function MapComponent({ bathrooms }) {
+  const locations = [
+    
+  ]
+  const center = {
+    lat: 34.069021,
+    lng: -118.443083
+  };
+  
+  
+  const [hoveredMarker, setHoveredMarker] = useState(null);
+
+  const handleMarkerMouseEnter = (index) => {
+    setHoveredMarker(index);
+  };
+
+  const handleMarkerMouseLeave = () => {
+    setHoveredMarker(null);
+  };
+
+  // const [markerRef, marker] = useMarkerRef();
+
+  const CustomMarker = ({ bathroom, index }) => {
+    const [markerRef, marker] = useMarkerRef();
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+      <React.Fragment>
+        <Marker 
+          ref={markerRef}
+          position={{lat: bathroom.latitude, lng: bathroom.longitude }}
+          onMouseOver={() => setIsHovered(true)}
+          onMouseOut={() => setIsHovered(false)}
+        />
+        { isHovered && (
+          <InfoWindow anchor={marker}>
+            <b>{bathroom.building}</b>          
+          </InfoWindow>
+        )
+        }
+      </React.Fragment>
+    );
+  };
+  
   return (
     <div id="map" style={{ width: "100%" }}>
-      <iframe
-        width="100%"
-        height="100%"
-        frameborder="0"
-        style={{ border: 0 }}
-        referrerpolicy="no-referrer-when-downgrade"
-        src={maps_src}
-        allowfullscreen
-      ></iframe>
+      <APIProvider apiKey={mapsApiKey}>
+        <Map
+          defaultCenter={center}
+          defaultZoom={15}
+        >
+      { bathrooms.map((bathroom, index) => {
+
+        return ( 
+          <CustomMarker bathroom={bathroom} index={index} />
+        )
+      }
+      )}
+        </Map>
+      </APIProvider>
     </div>
   );
 }
 
-export default BasicExample;
+export default MapComponent;
