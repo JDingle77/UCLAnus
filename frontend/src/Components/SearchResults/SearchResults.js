@@ -140,7 +140,7 @@ function SearchResults() {
         </div>
           </div>
       </div>
-      <MapComponent bathrooms={bathrooms}/>
+      <MapComponent bathrooms={bathrooms.filter(bathroom => isBathroomGood(bathroom))}/>
     </div>
   );
 }

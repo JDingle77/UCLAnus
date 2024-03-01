@@ -28,9 +28,7 @@ function MapComponent({ bathrooms }) {
     setHoveredMarker(null);
   };
 
-  // const [markerRef, marker] = useMarkerRef();
-
-  const CustomMarker = ({ bathroom, index }) => {
+  const HoverMarker = ({ bathroom, index }) => {
     const [markerRef, marker] = useMarkerRef();
     const [isHovered, setIsHovered] = useState(false);
 
@@ -62,7 +60,7 @@ function MapComponent({ bathrooms }) {
       { bathrooms.map((bathroom, index) => {
 
         return ( 
-          <CustomMarker bathroom={bathroom} index={index} />
+          <HoverMarker bathroom={bathroom} index={index} />
         )
       }
       )}
