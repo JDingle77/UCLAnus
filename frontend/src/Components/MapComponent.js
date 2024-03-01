@@ -9,14 +9,10 @@ const libraries = ['places']
 // defaults
 
 function MapComponent({ bathrooms }) {
-  const locations = [
-    
-  ]
   const center = {
     lat: 34.069021,
     lng: -118.443083
   };
-  
   
   const [hoveredMarker, setHoveredMarker] = useState(null);
 
