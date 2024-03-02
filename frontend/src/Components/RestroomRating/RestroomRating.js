@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 
-function RestroomRating() {
+function RestroomRating(props) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
   return (
@@ -15,7 +15,7 @@ function RestroomRating() {
         fullSymbol={filledStar}
         fractions={2}
         readonly
-        initialRating={4}
+          initialRating={props.data.rating ? props.data.rating : 0}
       />
       <p>724 Reviews</p>
     </div>

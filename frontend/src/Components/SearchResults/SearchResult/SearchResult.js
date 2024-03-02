@@ -23,7 +23,7 @@ function SearchResult(props) {
           />
           <div className="address">
               <h2 className="subtitle bathroom-name">{props.data.building + " " + props.data.floor}</h2>
-            <RestroomRating />
+              <RestroomRating data={props.data}/>
             <p>
               <img src={PinEmoji} alt="pin" />{" "}
 		<Badge bg="primary">{props.data.address}</Badge>

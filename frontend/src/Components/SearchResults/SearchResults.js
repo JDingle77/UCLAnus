@@ -3,7 +3,7 @@ import SearchResult from "./SearchResult/SearchResult";
 import "./SearchResults.css";
 import MapComponent from "../MapComponent";
 import { Popup } from "reactjs-popup";
-import { Slider } from '@mui/material';
+import { Button, Slider } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import {useState, useEffect} from "react";
@@ -115,7 +115,7 @@ function SearchResults() {
     return (
     <div className="content">
       <div>
-          <Popup  contentStyle={{display: 'flex', marginRight: "0px", paddingRight: "0px", float: "right", height: "100%"}} trigger={<button> Trigger </button>}  className={"popup-content"} modal>
+          <Popup  contentStyle={{display: 'flex', marginRight: "0px", paddingRight: "0px", float: "right", height: "100%"}} trigger={<Button variant="contained" size="small"> Filters  </Button>}  className={"popup-content"} modal>
         <div style={{position: "fixed", bottom: "0", right:"0", height: "100%", width: "300px", background: "#dedbd3"}}>
             <div style={{margin: '20px'}}>
           <div> Filters </div>
