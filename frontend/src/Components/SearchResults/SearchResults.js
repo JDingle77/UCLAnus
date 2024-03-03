@@ -8,6 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import {useState, useEffect} from "react";
 import axios from 'axios';
+import { useGeolocated } from "react-geolocated";
 
 function SearchResults() {
     const marks = [
@@ -77,10 +78,20 @@ function SearchResults() {
     useEffect(() => {
 	getBathrooms();
     }, []);
-
+    function dist(lat1, lng1, lat2, lng2) {
+	return (Math.abs(lat1-lat2)+Math.abs(lng1 - lng2))*100;
+    }
     function isBathroomGood(bathroom) {
 	if (bathroom.rating == null || bathroom.rating >= minRating) {
-	    //if something about bathroom distsance
+	    if (coords && isGeolocationAvailable && isGeolocationEnabled) {
+		if (dist(coords.latitude, coords.longitude, bathroom.latitude, bathroom.longitude) > maxDistance) {
+		    console.log("I am here: " + coords.latitude + " " + coords.longitude);
+		    console.log("Bathroom is here: " + bathroom.latitude + " " + bathroom.longitude);
+		    console.log(dist(coords.latitude, coords.longitude, bathroom.latitude, bathroom.longitude));
+		    return false;
+		}
+	    }
+
 	    if (isMale && bathroom.genders.indexOf("male") > -1) {
 		return true;
 	    }
@@ -93,6 +104,13 @@ function SearchResults() {
 	}
 	return false;
     }
+    const { coords, isGeolocationAvailable, isGeolocationEnabled } =
+          useGeolocated({
+              positionOptions: {
+                  enableHighAccuracy: false,
+              },
+              userDecisionTimeout: 5000,
+          });
     
     return (
     <div className="content">

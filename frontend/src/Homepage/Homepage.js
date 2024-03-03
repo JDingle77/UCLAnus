@@ -5,8 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SearchResults from "../Components/SearchResults/SearchResults";
 import "./Homepage.css";
 
+
 let client_id = "51e5efa586842061de57";
 let scopes = "read:user read:org repo";
+
 
 function Homepage() {
   let [userID, setUserID] = useState(undefined);
@@ -69,7 +71,6 @@ function Homepage() {
       >
         <span>Sign in with GitHub</span>{" "}
       </a>
-
       <span>{userID !== undefined ? <b> {userID}</b> : <></>} </span>
       <SearchResults className="search-results" />
     </div>
