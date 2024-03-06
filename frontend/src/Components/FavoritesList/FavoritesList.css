@@ -1,0 +1,12 @@
+.favorites-list {
+    height: 50vh;
+    bottom: 0;
+}
+
+.rectangle {
+    bottom: 0;
+    width: 1000px;
+    height: 500px;
+    background: #F2F2F2;
+    border-radius: 50px;
+}

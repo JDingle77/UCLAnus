@@ -1,80 +1,8 @@
-.profile {
-    height: 100vh;
-    width: 100%;
-}
-
 .profile-info {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 37vh;
-    margin-top: 100px;
+    height: 35vh;
+    margin-top: 80px;
+    margin-bottom: 30px;
 }
-
-.profile-image {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    align-items: center;
-}
-
-.favorites-list {
-    height: 50vh;
-    bottom: 0;
-}
-
-.rectangle {
-    bottom: 0;
-    width: 1000px;
-    height: 500px;
-    background: #F2F2F2;
-    border-radius: 50px;
-}
-
-.profile-field-left {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin-top: 60px;
-    margin-left: 60px;
-}
-
-.profile-field-right {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin-top: 85px;
-    margin-left: 90px;
-}
-
-.my-profile {
-    font-size: 14px;
-    font-family: Helvetica, Arial, sans-serif;
-}
-
-.field {
-    font-size: 14px;
-    font-family: Helvetica, Arial, sans-serif;
-    color: #7F7F83;
-}
-
-.top-rectangle {
-    position: absolute;
-    width: 100%;
-    left: 0%;
-    right: 11.37%;
-    top: 35.16%;
-    bottom: 63.46%;
-    background: #333333;
-}
-  
-.bottom-rectangle {
-    position: absolute;
-    width: 100%;
-    left: 0%;
-    right: 11.37%;
-    top: 64.24%;
-    bottom: 34.38%;
-    background: #333333;
-}
-  
