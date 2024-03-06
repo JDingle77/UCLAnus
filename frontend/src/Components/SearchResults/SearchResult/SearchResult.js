@@ -21,12 +21,12 @@ function SearchResult(props) {
             alt="bathroom"
             className="bathroom-img"
           />
-          <div className="address">
+            <div className="address" style={{justifyContent: "center"}}>
               <h2 className="subtitle bathroom-name">{props.data.building + " " + props.data.floor}</h2>
-            <RestroomRating />
+              <RestroomRating data={props.data}/>
             <p>
               <img src={PinEmoji} alt="pin" />{" "}
-		<Badge bg="primary">{props.data.address}</Badge>
+		<Badge bg="primary" style={{justifyContent: "center"}}>{props.data.address}</Badge>
             </p>
           </div>
         </div>
