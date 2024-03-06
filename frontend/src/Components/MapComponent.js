@@ -30,7 +30,6 @@ function MapComponent({ bathrooms, userCoords }) {
     scale: 1,
   };
 
-  console.log("brohj")
   const HoverMarker = ({ bathroom, index }) => {
     const [markerRef, marker] = useMarkerRef();
     const [isHovered, setIsHovered] = useState(false);

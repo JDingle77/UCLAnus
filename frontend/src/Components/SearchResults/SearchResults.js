@@ -5,6 +5,7 @@ import MapComponent from "../MapComponent";
 import { Popup } from "reactjs-popup";
 import { Button, Slider } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
+import TextField from '@mui/material/TextField';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -36,7 +37,11 @@ function SearchResults() {
   function check() {
     console.log("What");
   }
-
+  const [searchQuery, setSearchQuery] = useState('');
+  const updateSearchQuery = (event) => {
+    setSearchQuery(event.target.value);
+  }; 
+  
   const [minRating, setMinRating] = useState(1);
   function updateMinRating(event) {
     setMinRating(event.target.value);
@@ -109,6 +114,11 @@ function SearchResults() {
           return false;
         }
       }
+      
+      // search query
+      if (!bathroom.building.toLowerCase().includes(searchQuery.toLowerCase())) {
+        return false;
+      }
 
       if (isMale && bathroom.genders.indexOf("male") > -1) {
         return true;
@@ -133,6 +143,8 @@ function SearchResults() {
   return (
     <div className="content">
       <div className="left-column">
+      <div className="info-bar"> 
+      <TextField id="outlined-basic" label="Search Bathrooms" variant="outlined" style={{flex: 2}} onChange={updateSearchQuery}/>
         <Popup
           contentStyle={{
             display: "flex",
@@ -228,6 +240,7 @@ function SearchResults() {
             </div>
           </div>
         </Popup>
+    </div>
         <div className="search-results">
           <div>
             {bathrooms.map((bathroom) => {
