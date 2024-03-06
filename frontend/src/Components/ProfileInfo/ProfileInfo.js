@@ -7,10 +7,10 @@ function ProfileInfo() {
 
   return (
     <div className="profile">
-        <div className="profile-info">
-          <ProfileImage/>
-          <ProfileFields/>
-        </div>
+      <div className="profile-info">
+        <ProfileImage/>
+        <ProfileFields/>
+      </div>
     </div>
   );
 }

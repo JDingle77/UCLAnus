@@ -13,15 +13,15 @@ function ReviewsList() {
         <div className="header-wrapper">
           <Container>
             <div className="profile-header">
-                <hr/>
-                <div className="field-header">MY REVIEWS</div>
-                <hr/>
+              <hr/>
+              <div className="field-header">MY REVIEWS</div>
+              <hr/>
             </div>
           </Container>
           <Container>
             <div className="nav-buttons">
-                <Button variant="secondary">{leftArrow}</Button>
-                <Button variant="secondary">{rightArrow}</Button>
+              <Button variant="secondary">{leftArrow}</Button>
+              <Button variant="secondary">{rightArrow}</Button>
             </div>
           </Container>
         </div>

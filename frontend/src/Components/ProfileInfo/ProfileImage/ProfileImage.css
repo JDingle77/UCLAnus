@@ -1,20 +1,20 @@
 .profile-image {
-    display: flex;
-    flex-direction: column;
-    width: 270px;
-    align-items: center;
-    margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  align-items: center;
+  margin-right: 20px;
 }
 
 .img-upload {
-    font-size: 14px;
-    margin-top: 10px;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .img-upload:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .img-upload input {
-    display: none;
+  display: none;
 }
