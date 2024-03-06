@@ -8,22 +8,29 @@ let { mapsApiKey, mapsSignature } = require("./mapsapikey.json");
 const libraries = ['places']
 // defaults
 
-function MapComponent({ bathrooms }) {
-  const center = {
+function MapComponent({ bathrooms, userCoords }) {
+  let center = {
     lat: 34.069021,
     lng: -118.443083
   };
-  
-  const [hoveredMarker, setHoveredMarker] = useState(null);
 
-  const handleMarkerMouseEnter = (index) => {
-    setHoveredMarker(index);
+  if (userCoords != null) {
+    center = {
+      lat: userCoords.latitude,
+      lng: userCoords.longitude
+    };
+  }
+
+  const customIcon = {
+    path: "M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12zm10 6c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6z",
+    fillColor: "blue",
+    fillOpacity: 0.75,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 1,
   };
 
-  const handleMarkerMouseLeave = () => {
-    setHoveredMarker(null);
-  };
-
+  console.log("brohj")
   const HoverMarker = ({ bathroom, index }) => {
     const [markerRef, marker] = useMarkerRef();
     const [isHovered, setIsHovered] = useState(false);
@@ -60,6 +67,10 @@ function MapComponent({ bathrooms }) {
         )
       }
       )}
+      {userCoords != null && (
+        <Marker position={center} icon={customIcon}/>
+      )
+      }
         </Map>
       </APIProvider>
     </div>
