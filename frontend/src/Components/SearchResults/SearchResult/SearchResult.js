@@ -9,7 +9,25 @@ import Button from "react-bootstrap/Button";
 import RestroomRating from "../../RestroomRating/RestroomRating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
+import WcIcon from '@mui/icons-material/Wc';
 
+function get_gender_string(genders) {
+    let str = "";
+    if (genders.indexOf("male") > -1) {
+	str += "Male, ";
+    }
+    if (genders.indexOf("female") > -1) {
+	str += "Female, ";
+    }
+    if (genders.indexOf("all gender") > -1) {
+	str += "Gender Neutral, ";
+    }
+    if (str.length - 2 > 11) {
+	return "All Options"
+    }
+    return str.substring(0, str.length - 2);
+}
 function SearchResult(props) {
   const rightArrow = <FontAwesomeIcon icon={faArrowRight} />;
   return (
@@ -31,17 +49,15 @@ function SearchResult(props) {
           </div>
         </div>
         <div className="general-info">
-          <p>
-            <img src={HandDryer} alt="pin" />
-            <Badge bg="dark">Hand Dryers</Badge>
+            <p>
+		<div style={{color: "grey", transform: "scale(1.3)"}}> <WcIcon/> </div>
+		<Badge bg="dark">
+		    {get_gender_string(props.data.genders)}
+		</Badge>
           </p>
-          <p>
-            <img src={Accessible} alt="pin" />
-            <Badge bg="dark">Accessible</Badge>
-          </p>
-          <p>
-            <img src={Backpack} alt="pin" />
-            <Badge bg="dark">Bag Hooks</Badge>
+            <p>
+		<div style={{color: "grey", transform: "scale(1.3)"}}> <DirectionsWalkIcon/> </div>
+		<Badge bg="dark"> {props.distance} Feet</Badge>
           </p>
           <div className="more-info">
             <Button variant="secondary">{rightArrow}</Button>

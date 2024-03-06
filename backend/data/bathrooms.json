@@ -18,18 +18,18 @@
   "building": "Boelter Hall",
   "floor": 3,
   "genders": ["male"],
-    "rating": null,
-    "number_ratings": 0,
+    "rating": 4.3,
+    "number_ratings": 3,
   "photos": []
 },
 {
   "bathroom_id": 3,
-  "address": "330 De Neve Dr, Los Angeles, CA 90095",
+  "address": "330 De Neve Dr",
   "latitude": 34.0726165,
   "longitude": -118.4501264,
   "building": "Covel Commons",
   "floor": 3,
-  "genders": ["male", "female"],
+  "genders": ["male", "female", "all gender"],
     "rating": null,
     "number_ratings": 0,
   "photos": []
