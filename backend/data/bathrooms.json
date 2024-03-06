@@ -6,7 +6,8 @@
   "building": "Boelter Hall",
   "floor": 5,
   "genders": ["all gender"],
-  "rating": null,
+    "rating": null,
+    "number_ratings": 0,
   "photos": []
 },
 {
@@ -17,7 +18,8 @@
   "building": "Boelter Hall",
   "floor": 3,
   "genders": ["male"],
-  "rating": null,
+    "rating": null,
+    "number_ratings": 0,
   "photos": []
 },
 {
@@ -28,7 +30,8 @@
   "building": "Covel Commons",
   "floor": 3,
   "genders": ["male", "female"],
-  "rating": null,
+    "rating": null,
+    "number_ratings": 0,
   "photos": []
 }
 ]

@@ -17,7 +17,7 @@ function RestroomRating(props) {
         readonly
           initialRating={props.data.rating ? props.data.rating : 0}
       />
-      <p>724 Reviews</p>
+	<p>{props.data.number_ratings} Reviews</p>
     </div>
   );
 }

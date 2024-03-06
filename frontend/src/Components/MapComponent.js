@@ -54,7 +54,7 @@ function MapComponent({ bathrooms, userCoords }) {
   };
   
   return (
-    <div id="map" style={{ width: "100%" }}>
+    <div id="map" style={{ width: "70%" }}>
       <APIProvider apiKey={mapsApiKey}>
         <Map
           defaultCenter={center}
