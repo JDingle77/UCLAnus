@@ -9,24 +9,24 @@ import Button from "react-bootstrap/Button";
 import RestroomRating from "../../RestroomRating/RestroomRating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import WcIcon from '@mui/icons-material/Wc';
+import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
+import WcIcon from "@mui/icons-material/Wc";
 
 function get_gender_string(genders) {
-    let str = "";
-    if (genders.indexOf("male") > -1) {
-	str += "Male, ";
-    }
-    if (genders.indexOf("female") > -1) {
-	str += "Female, ";
-    }
-    if (genders.indexOf("all gender") > -1) {
-	str += "Gender Neutral, ";
-    }
-    if (str.length - 2 > 11) {
-	return "All Options"
-    }
-    return str.substring(0, str.length - 2);
+  let str = "";
+  if (genders.indexOf("male") > -1) {
+    str += "Male, ";
+  }
+  if (genders.indexOf("female") > -1) {
+    str += "Female, ";
+  }
+  if (genders.indexOf("all gender") > -1) {
+    str += "Gender Neutral, ";
+  }
+  if (str.length - 2 > 11) {
+    return "All Options";
+  }
+  return str.substring(0, str.length - 2);
 }
 function SearchResult(props) {
   const rightArrow = <FontAwesomeIcon icon={faArrowRight} />;
@@ -39,25 +39,33 @@ function SearchResult(props) {
             alt="bathroom"
             className="bathroom-img"
           />
-            <div className="address" style={{justifyContent: "center"}}>
-              <h2 className="subtitle bathroom-name">{props.data.building + " " + props.data.floor}</h2>
-              <RestroomRating data={props.data}/>
+          <div className="address" style={{ justifyContent: "center" }}>
+            <h2 className="subtitle bathroom-name">
+              {props.data.building + " " + props.data.floor}
+            </h2>
+            <RestroomRating data={props.data} />
             <p>
               <img src={PinEmoji} alt="pin" />{" "}
-		<Badge bg="primary" style={{justifyContent: "center"}}>{props.data.address}</Badge>
+              <Badge bg="primary" style={{ justifyContent: "center" }}>
+                {props.data.address}
+              </Badge>
             </p>
           </div>
         </div>
         <div className="general-info">
-            <p>
-		<div style={{color: "grey", transform: "scale(1.3)"}}> <WcIcon/> </div>
-		<Badge bg="dark">
-		    {get_gender_string(props.data.genders)}
-		</Badge>
+          <p>
+            <div style={{ color: "grey", transform: "scale(1.3)" }}>
+              {" "}
+              <WcIcon />{" "}
+            </div>
+            <Badge bg="dark">{get_gender_string(props.data.genders)}</Badge>
           </p>
-            <p>
-		<div style={{color: "grey", transform: "scale(1.3)"}}> <DirectionsWalkIcon/> </div>
-		<Badge bg="dark"> {props.distance} Feet</Badge>
+          <p>
+            <div style={{ color: "grey", transform: "scale(1.3)" }}>
+              {" "}
+              <DirectionsWalkIcon />{" "}
+            </div>
+            <Badge bg="dark"> {props.distance} Feet</Badge>
           </p>
           <div className="more-info">
             <Button variant="secondary">{rightArrow}</Button>
