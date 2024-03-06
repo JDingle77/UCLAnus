@@ -29,8 +29,8 @@ function SearchResults() {
       label: "0 mi",
     },
     {
-      value: 5,
-      label: "5 mi",
+      value: 1000000,
+      label: "10000 ft",
     },
   ];
 
@@ -47,7 +47,7 @@ function SearchResults() {
     setMinRating(event.target.value);
   }
 
-  const [maxDistance, setMaxDistance] = useState(5);
+  const [maxDistance, setMaxDistance] = useState(10000);
   function updateMaxDistance(event) {
     setMaxDistance(event.target.value);
   }
@@ -86,32 +86,19 @@ function SearchResults() {
     getBathrooms();
   }, []);
   function dist(lat1, lng1, lat2, lng2) {
-    return (Math.abs(lat1 - lat2) + Math.abs(lng1 - lng2)) * 100;
+    return Math.abs(lat1 - lat2)*364000 + Math.abs(lng1 - lng2) * 288000;
   }
+    function dist_bathroom(bathroom) {
+	if (coords && isGeolocationAvailable && isGeolocationEnabled) {
+	    return Math.floor(dist(coords.latitude, coords.longitude, bathroom.latitude, bathroom.longitude));
+	}
+	return 0;
+    }
   function isBathroomGood(bathroom) {
     if (bathroom.rating == null || bathroom.rating >= minRating) {
       if (coords && isGeolocationAvailable && isGeolocationEnabled) {
-        if (
-          dist(
-            coords.latitude,
-            coords.longitude,
-            bathroom.latitude,
-            bathroom.longitude
-          ) > maxDistance
-        ) {
-          console.log("I am here: " + coords.latitude + " " + coords.longitude);
-          console.log(
-            "Bathroom is here: " + bathroom.latitude + " " + bathroom.longitude
-          );
-          console.log(
-            dist(
-              coords.latitude,
-              coords.longitude,
-              bathroom.latitude,
-              bathroom.longitude
-            )
-          );
-          return false;
+          if (dist_bathroom(bathroom) > maxDistance) {
+	      return false;
         }
       }
       
@@ -199,8 +186,8 @@ function SearchResults() {
               <div style={{ textAlign: "center" }}> Maximum Distance </div>
               <Slider
                 min={0}
-                max={5}
-                step={0.001}
+                max={10000}
+                step={100}
                 valueLabelDisplay="off"
                 marks={marks2}
                 defaultValue={maxDistance}
@@ -247,7 +234,7 @@ function SearchResults() {
               if (isBathroomGood(bathroom)) {
                 console.log("Props: ");
                 console.log(bathroom);
-                return <SearchResult data={bathroom} />;
+                  return <SearchResult data={bathroom} distance={dist_bathroom(bathroom)}/>;
               }
               return null;
             })}
