@@ -1,9 +1,37 @@
 [{
   "bathroom_id": 1,
   "address": "123 bruh st.",
+  "latitude": 34.054000,
+  "longitude": -118.409010,
   "building": "Boelter Hall",
   "floor": 5,
   "genders": ["all gender"],
-  "rating": null,
+    "rating": null,
+    "number_ratings": 0,
   "photos": []
-}]
+},
+{
+  "bathroom_id": 2,
+  "address": "123 yeet ave",
+  "latitude": 34.069021,
+  "longitude": -118.443083,
+  "building": "Boelter Hall",
+  "floor": 3,
+  "genders": ["male"],
+    "rating": 4.3,
+    "number_ratings": 3,
+  "photos": []
+},
+{
+  "bathroom_id": 3,
+  "address": "330 De Neve Dr",
+  "latitude": 34.0726165,
+  "longitude": -118.4501264,
+  "building": "Covel Commons",
+  "floor": 3,
+  "genders": ["male", "female", "all gender"],
+    "rating": null,
+    "number_ratings": 0,
+  "photos": []
+}
+]

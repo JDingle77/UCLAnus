@@ -59,3 +59,9 @@
   bottom: 34.38%;
   background: #333333;
 }
+
+.a-tag {
+    color: black;
+    text-decoration: none; 
+    background-color: none;
+}

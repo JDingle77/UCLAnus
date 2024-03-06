@@ -1,8 +1,11 @@
-const MongoClient  = require('mongodb').MongoClient;
+// mongo.js
+const { MongoClient } = require("mongodb");
+const fs = require("fs").promises;
+const path = require("path");
+
 const url = "mongodb://localhost:27017/";
-const fs = require("fs")
-const path = require("path")
-const bathroomJsonPath = "./data/bathrooms.json"
+const dbName = "uclanus";
+const bathroomJsonPath = "./data/bathrooms.json";
 
 const seedDB = async (db) => {
   const bathroomCollection = db.collection("bathrooms");
@@ -11,24 +14,30 @@ const seedDB = async (db) => {
   } catch (error) {
     console.log("IF THIS IS YOUR FIRST TIME STARTING UP, IGNORE THIS: ", error);
   }
-  const bathroomData = JSON.parse(await fs.promises.readFile(bathroomJsonPath, 'utf-8'));
+  const bathroomData = JSON.parse(await fs.readFile(bathroomJsonPath, "utf-8"));
   await bathroomCollection.insertMany(bathroomData);
 };
 
-const setup = async () => {
+const connectToDatabase = async () => {
   try {
     const client = await MongoClient.connect(url, {
-      useNewUrlParser: true
+      useNewUrlParser: true,
     });
-    const db = client.db('uclanus');
-    seedDB(db);
-    console.log("db setup successfully!");
+    console.log("Connected to the database");
+    return client.db(dbName);
   } catch (error) {
-    console.log("error", error);
+    console.error("Error connecting to the database:", error);
+    throw error;
   }
 };
 
-setup();
+const setup = async () => {
+  const db = await connectToDatabase();
+  await seedDB(db);
+  console.log("db setup successfully!");
+};
 
-
-// module.exports = new Mongo();
+module.exports = {
+  connectToDatabase,
+  setup,
+};

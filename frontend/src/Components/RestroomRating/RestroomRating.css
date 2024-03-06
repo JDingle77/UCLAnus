@@ -1,6 +1,8 @@
 .rating {
   display: flex;
   align-items: center;
+  width: 250px;
+  justify-content: center;
 }
 
 .rating p {

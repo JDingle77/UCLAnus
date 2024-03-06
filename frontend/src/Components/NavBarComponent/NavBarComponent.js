@@ -3,8 +3,62 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./NavBarComponent.css";
 import PoopEmoji from "../Images/poop.png";
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+let client_id = "51e5efa586842061de57";
+let scopes = "read:user read:org repo";
 
 function NavBarComponent() {
+    async function getUserID() {
+	let request = await fetch("http://localhost:4000/get-userid", {
+	    method: "GET",
+	    headers: {
+		"Content-Type": "application/json",
+		Accept: "application/json",
+	    },
+	    credentials: "include",
+	}).catch((error) => {
+	    console.error(error);
+	});
+	let response = await request.json();
+	console.log("Setting UserID: " + response);
+	setUserID(response.userid);
+    }
+    async function login(code) {
+	let request = await fetch("http://localhost:4000/login", {
+	    method: "POST",
+	    headers: {
+		"Content-Type": "application/json",
+	    },
+	    credentials: "include",
+	    body: JSON.stringify({
+		authcode: code,
+	    }),
+	}).catch((error) => {
+	    console.error(error);
+	});
+	let response = await request.json();
+	//	console.log("Success!");
+	//	console.log(response.logged);
+	getUserID();
+	if (!response.logged) {
+	    window.location.reload(true);
+	}
+    }
+    const [searchParams, setSearchParams] = useSearchParams();
+    useEffect(() => {
+	const url = window.location.href;
+	const urlParams = new URLSearchParams(new URL(url).search);
+	let code = urlParams.get("code");
+	if (url.includes("?code=")) {
+	    searchParams.delete("code");
+	    setSearchParams(searchParams);
+	    console.log("url code: " + code);
+	    login(code);
+	}
+    });
+  let [userID, setUserID] = useState("tempID");
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -20,8 +74,14 @@ function NavBarComponent() {
             <Nav.Item>
               <Nav.Link href="/account">
                 <Container>
-                  <div className="top-rectangle"></div>
-                  <div className="my-account">MY ACCOUNT</div>
+          <div className="top-rectangle"></div>
+	  {userID != "tempID" ? 
+           <a className="my-account a-tag">MY ACCOUNT</a>
+	   :
+	   <a id="github-sign-in" className = "a-tag" href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}>
+	   SIGN IN
+	   </a>
+	  }
                   <div className="bottom-rectangle"></div>
                 </Container>
               </Nav.Link>
