@@ -1,3 +1,8 @@
+.info-bar {
+  width: 100%;
+  display: flex;
+}
+
 .search-results > * {
   margin-top: 28px;
 }
