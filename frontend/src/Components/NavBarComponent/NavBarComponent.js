@@ -20,10 +20,16 @@ function NavBarComponent() {
 	    credentials: "include",
 	}).catch((error) => {
 	    console.error(error);
+	    return;
 	});
-	let response = await request.json();
-	console.log("Setting UserID: " + response);
-	setUserID(response.userid);
+	let response = await request.json().catch((error) => {
+	    console.error(error);
+	    return;
+	});
+	console.log(response);
+	if (response) {
+	    setUserID(response.userid);
+	}
     }
     async function login(code) {
 	let request = await fetch("http://localhost:4000/login", {
@@ -57,9 +63,10 @@ function NavBarComponent() {
 	    console.log("url code: " + code);
 	    login(code);
 	}
+	getUserID();
     });
-  let [userID, setUserID] = useState("tempID");
-  return (
+  let [userID, setUserID] = useState("temp");
+    return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand>
@@ -75,7 +82,7 @@ function NavBarComponent() {
               <Nav.Link href="/account">
                 <Container>
           <div className="top-rectangle"></div>
-	  {userID != "tempID" ? 
+	  {userID != "Temp" ? 
            <a className="my-account a-tag">MY ACCOUNT</a>
 	   :
 	   <a id="github-sign-in" className = "a-tag" href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}>

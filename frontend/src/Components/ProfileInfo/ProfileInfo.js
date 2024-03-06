@@ -3,9 +3,10 @@ import React from "react";
 import ProfileImage from "./ProfileImage/ProfileImage";
 import ProfileFields from "./ProfileFields/ProfileFields";
 
-function ProfileInfo() {
+import { useEffect, useState } from 'react';
 
-  return (
+function ProfileInfo() {
+    return (
     <div className="profile">
       <div className="profile-info">
         <ProfileImage/>
