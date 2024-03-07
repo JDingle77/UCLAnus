@@ -58,10 +58,16 @@ function RestroomReviews() {
           <Badge bg="dark"> 50 Feet</Badge>
         </p>
       </div>
-      <div className="reviews">
-        <RestroomReview />
-        <RestroomReview />
-        <RestroomReview />
+      <div className="reviews-wrap">
+        <div className="reviews">
+          <RestroomReview />
+          <RestroomReview />
+          <RestroomReview />
+          <RestroomReview />
+          <RestroomReview />
+          <RestroomReview />
+          <RestroomReview />
+        </div>
       </div>
     </div>
   );

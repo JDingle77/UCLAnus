@@ -13,16 +13,18 @@ function RestroomReview() {
     <Card>
       <Card.Body>
         <div className="name-rating">
-          <div className="top-bar"></div>
-          <Card.Title>@JDINGLE</Card.Title>
-          <div className="bottom-bar"></div>
-          <Rating
-            emptySymbol={emptyStar}
-            fullSymbol={filledStar}
-            fractions={2}
-            readonly
-            initialRating={4}
-          />
+          <hr />
+          <div className="field-header">@JDINGLE</div>
+          <hr />
+          <div className="star-rating">
+            <Rating
+              emptySymbol={emptyStar}
+              fullSymbol={filledStar}
+              fractions={2}
+              readonly
+              initialRating={4}
+            />
+          </div>
         </div>
         <Card.Text>
           Some quick example text to build on the card title and make up the
@@ -30,13 +32,6 @@ function RestroomReview() {
         </Card.Text>
       </Card.Body>
     </Card>
-    // <div className="restroom-review">
-    //   <div className="info">
-    //     <div>Username</div>
-    //     <div>Rating</div>
-    //   </div>
-    //   <div>Review</div>
-    // </div>
   );
 }
 

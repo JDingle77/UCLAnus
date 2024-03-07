@@ -60,15 +60,22 @@
   margin-top: 1rem;
 }
 
+.reviews-wrap {
+  display: flex;
+  height: 40%;
+  width: 100vw;
+  overflow-x: auto;
+}
+
 .reviews {
   display: flex;
-  height: 35%;
-  width: 100%;
-  justify-content: space-around;
+  height: 100%;
 }
 
 .reviews > * {
-    width: 25%;
+  width: 450px;
+  --bs-card-border-width: 0;
+  margin: 10px;
 }
 
 .badge {
