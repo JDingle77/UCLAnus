@@ -81,3 +81,8 @@
 .badge {
   margin-left: 10px;
 }
+
+.write-review {
+  display: flex;
+  flex-direction: column;
+}

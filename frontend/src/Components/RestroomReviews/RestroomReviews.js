@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RestroomReviews.css";
 import RestroomRating from "../RestroomRating/RestroomRating";
 import PinEmoji from "../Images/pin.png";
@@ -11,6 +11,11 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 
 function RestroomReviews() {
+  const [appearReview, setAppearReview] = useState(false);
+  const writeReviewClicked = () => {
+    setAppearReview(!appearReview);
+  };
+
   return (
     <div className="restroom-reviews">
       <div className="images">
@@ -35,7 +40,7 @@ function RestroomReviews() {
       </div>
       <div className="description-border"></div>
       <div className="actions">
-        <Button variant="secondary">
+        <Button variant="secondary" onClick={writeReviewClicked}>
           <StarBorderIcon /> Write A Review
         </Button>
         <Button variant="secondary">
@@ -58,6 +63,9 @@ function RestroomReviews() {
           <Badge bg="dark"> 50 Feet</Badge>
         </p>
       </div>
+      { appearReview && (
+        <div className="write-review">Write Review</div>
+      )}
       <div className="reviews-wrap">
         <div className="reviews">
           <RestroomReview />

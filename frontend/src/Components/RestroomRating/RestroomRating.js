@@ -15,9 +15,9 @@ function RestroomRating(props) {
         fullSymbol={filledStar}
         fractions={2}
         readonly
-          initialRating={props.data.rating ? props.data.rating : 0}
+        initialRating={props.data.rating ? props.data.rating : 0}
       />
-	<p>{props.data.number_ratings} Reviews</p>
+      <p>{props.data.number_ratings} Reviews</p>
     </div>
   );
 }
