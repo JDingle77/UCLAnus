@@ -1,14 +1,12 @@
 .restroom-reviews {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 128px);
-  overflow-y: auto;
   align-items: center;
 }
 
 .images {
   display: flex;
-  height: 30%;
+  height: 312px;
   width: 100%;
 }
 
@@ -21,7 +19,7 @@
 .description {
   display: flex;
   justify-content: space-between;
-  height: 10%;
+  height: 90px;
   margin-top: 10px;
   width: 80%;
 }
@@ -40,7 +38,7 @@
 
 .actions {
   display: flex;
-  height: 7%;
+  height: 64px;
   width: 55%;
   justify-content: space-around;
   margin-bottom: 15px;
@@ -48,7 +46,7 @@
 
 .general {
   display: flex;
-  height: 7%;
+  height: 69px;
   width: 30%;
   justify-content: space-around;
   align-items: center;
@@ -62,22 +60,41 @@
 
 .reviews-wrap {
   display: flex;
-  height: 40%;
   width: 100vw;
+  height: 400px;
   overflow-x: auto;
 }
 
 .reviews {
   display: flex;
   height: 100%;
+  margin-left: 75px;
 }
 
 .reviews > * {
-  width: 450px;
+  width: 500px;
   --bs-card-border-width: 0;
-  margin: 10px;
+  margin: 20px;
 }
 
 .badge {
   margin-left: 10px;
+}
+
+.write-review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%
+}
+
+.text-box {
+  width: 100%;
+}
+
+.review-box {
+  height: 215px;
+  margin-top: 1rem;
+  border-width: 11px;
+  border-radius: 22px;
 }

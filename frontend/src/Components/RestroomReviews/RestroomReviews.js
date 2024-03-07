@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RestroomReviews.css";
 import RestroomRating from "../RestroomRating/RestroomRating";
+import Rating from "react-rating";
 import PinEmoji from "../Images/pin.png";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
@@ -9,8 +10,19 @@ import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import RestroomReview from "./RestroomReview/RestroomReview.js";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
+import Form from "react-bootstrap/Form";
 
 function RestroomReviews() {
+  const filledStar = <FontAwesomeIcon icon={fasStar} />;
+  const emptyStar = <FontAwesomeIcon icon={farStar} />;
+  const [appearReview, setAppearReview] = useState(false);
+  const writeReviewClicked = () => {
+    setAppearReview(!appearReview);
+  };
+
   return (
     <div className="restroom-reviews">
       <div className="images">
@@ -35,11 +47,11 @@ function RestroomReviews() {
       </div>
       <div className="description-border"></div>
       <div className="actions">
-        <Button variant="secondary">
-          <StarBorderIcon /> Write A Review
+        <Button variant="secondary" onClick={writeReviewClicked}>
+          <StarBorderIcon /> WRITE A REVIEW
         </Button>
         <Button variant="secondary">
-          <CampaignOutlinedIcon /> Report
+          <CampaignOutlinedIcon /> REPORT
         </Button>
       </div>
       <div className="general">
@@ -58,6 +70,28 @@ function RestroomReviews() {
           <Badge bg="dark"> 50 Feet</Badge>
         </p>
       </div>
+      {appearReview && (
+        <div className="write-review">
+          <Rating
+            emptySymbol={emptyStar}
+            fullSymbol={filledStar}
+            fractions={2}
+            onClick={(value) => console.log(value)}
+          />
+          <div className="field-header">SELECT YOUR RATING</div>
+          <Form className="text-box">
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Control className="review-box" as="textarea" rows={3} />
+            </Form.Group>
+          </Form>
+          <Button variant="secondary">
+            SUBMIT
+          </Button>
+        </div>
+      )}
       <div className="reviews-wrap">
         <div className="reviews">
           <RestroomReview />
