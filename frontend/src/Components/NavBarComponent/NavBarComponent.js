@@ -10,48 +10,48 @@ let client_id = "51e5efa586842061de57";
 let scopes = "read:user read:org repo";
 
 function NavBarComponent() {
-    async function getUserID() {
-	let request = await fetch("http://localhost:4000/get-userid", {
-	    method: "GET",
-	    headers: {
-		"Content-Type": "application/json",
-		Accept: "application/json",
-	    },
-	    credentials: "include",
-	}).catch((error) => {
-	    console.error(error);
-	    return;
-	});
-	let response = await request.json().catch((error) => {
-	    console.error(error);
-	    return;
-	});
-	console.log(response);
-	if (response) {
-	    setUserID(response.userid);
-	}
+  async function getUserID() {
+    let request = await fetch("http://localhost:4000/get-userid", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      credentials: "include",
+    }).catch((error) => {
+      console.error(error);
+      return;
+    });
+    let response = await request.json().catch((error) => {
+      console.error(error);
+      return;
+    });
+    console.log(response);
+    if (response) {
+      setUserID(response.userid);
     }
-    async function login(code) {
-	let request = await fetch("http://localhost:4000/login", {
-	    method: "POST",
-	    headers: {
-		"Content-Type": "application/json",
-	    },
-	    credentials: "include",
-	    body: JSON.stringify({
-		authcode: code,
-	    }),
-	}).catch((error) => {
-	    console.error(error);
-	});
-	let response = await request.json();
-	//	console.log("Success!");
-	//	console.log(response.logged);
-	getUserID();
-	if (!response.logged) {
-	    window.location.reload(true);
-	}
+  }
+  async function login(code) {
+    let request = await fetch("http://localhost:4000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        authcode: code,
+      }),
+    }).catch((error) => {
+      console.error(error);
+    });
+    let response = await request.json();
+    //	console.log("Success!");
+    //	console.log(response.logged);
+    getUserID();
+    if (!response.logged) {
+      window.location.reload(true);
     }
+  }
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     const url = window.location.href;
@@ -63,10 +63,10 @@ function NavBarComponent() {
       console.log("url code: " + code);
       login(code);
     }
-      getUserID();
+    getUserID();
   });
   let [userID, setUserID] = useState("temp");
-    return (
+  return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand>
@@ -81,14 +81,18 @@ function NavBarComponent() {
             <Nav.Item>
               <Nav.Link href="/account">
                 <Container>
-          <div className="top-rectangle"></div>
-	  {userID !== "Temp" ? 
-           <a className="my-account a-tag">MY ACCOUNT</a>
-	   :
-	   <a id="github-sign-in" className = "a-tag" href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}>
-	   SIGN IN
-	   </a>
-	  }
+                  <div className="top-rectangle"></div>
+                  {userID !== "Temp" ? (
+                    <a className="my-account a-tag">MY ACCOUNT</a>
+                  ) : (
+                    <a
+                      id="github-sign-in"
+                      className="a-tag"
+                      href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}
+                    >
+                      SIGN IN
+                    </a>
+                  )}
 
                   <div className="bottom-rectangle"></div>
                 </Container>
@@ -98,10 +102,7 @@ function NavBarComponent() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    );
+  );
 }
-
-	  
-	 
 
 export default NavBarComponent;
