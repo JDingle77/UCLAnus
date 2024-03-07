@@ -31,7 +31,27 @@ function NavBarComponent() {
 	    setUserID(response.userid);
 	}
     }
-  }
+    async function login(code) {
+	let request = await fetch("http://localhost:4000/login", {
+	    method: "POST",
+	    headers: {
+		"Content-Type": "application/json",
+	    },
+	    credentials: "include",
+	    body: JSON.stringify({
+		authcode: code,
+	    }),
+	}).catch((error) => {
+	    console.error(error);
+	});
+	let response = await request.json();
+	//	console.log("Success!");
+	//	console.log(response.logged);
+	getUserID();
+	if (!response.logged) {
+	    window.location.reload(true);
+	}
+    }
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     const url = window.location.href;
@@ -43,19 +63,8 @@ function NavBarComponent() {
       console.log("url code: " + code);
       login(code);
     }
-    const [searchParams, setSearchParams] = useSearchParams();
-    useEffect(() => {
-	const url = window.location.href;
-	const urlParams = new URLSearchParams(new URL(url).search);
-	let code = urlParams.get("code");
-	if (url.includes("?code=")) {
-	    searchParams.delete("code");
-	    setSearchParams(searchParams);
-	    console.log("url code: " + code);
-	    login(code);
-	}
-	getUserID();
-    });
+      getUserID();
+  });
   let [userID, setUserID] = useState("temp");
     return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -73,7 +82,7 @@ function NavBarComponent() {
               <Nav.Link href="/account">
                 <Container>
           <div className="top-rectangle"></div>
-	  {userID != "Temp" ? 
+	  {userID !== "Temp" ? 
            <a className="my-account a-tag">MY ACCOUNT</a>
 	   :
 	   <a id="github-sign-in" className = "a-tag" href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}>
@@ -89,7 +98,10 @@ function NavBarComponent() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
+    );
 }
+
+	  
+	 
 
 export default NavBarComponent;
