@@ -1,14 +1,23 @@
 [
   {
-    "user_id": 1,
+      "user_id": 1,
+      "username": "tom",
+      "name": "not tom",
+      "profile_pic": null,
     "favorite_list": []
   },
   {
-    "user_id": 2,
+      "user_id": 2,
+      "username": "stom",
+      "name": "second tom",
+      "profile_pic": null,
     "favorite_list": []
   },
   {
-    "user_id": 3,
-    "favorite_list": []
+      "user_id": 3,
+      "username": "ttom",
+      "name": "third tom",
+      "profile_pic": null,
+      "favorite_list": []
   }
-  ]
+]

@@ -67,7 +67,6 @@ const addReview = async (req, res) => {
       rating: rating,
       description: description || "",
     };
-
     // Insert the new review into the collection
     const result = await reviewCollection.insertOne(newReview);
 
@@ -84,7 +83,7 @@ const addReview = async (req, res) => {
       const averageRating = totalReviews > 0 ? totalRating / totalReviews : 0;
       const updatedBathroom = await bathroomCollection.findOneAndUpdate(
         { bathroom_id: bathroomId },
-        { $set: { rating: averageRating } },
+          { $set: { rating: averageRating , number_ratings: totalReviews+1} },
         { returnDocument: "after" }
       );
 

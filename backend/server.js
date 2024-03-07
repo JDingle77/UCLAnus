@@ -83,7 +83,10 @@ app.post("/login", async function (req, res) {
   });
 });
 
-app.get("/get-userid", function (req, res) {
+app.get("/get-userid", async function (req, res) {
+    const db = await connectToDatabase();
+    
+    const userCollection = db.collection("users");
   if (
     !Object.prototype.hasOwnProperty.call(req.cookies, "token") ||
     req.cookies["token"] === "undefined"
@@ -96,9 +99,25 @@ app.get("/get-userid", function (req, res) {
       headers: {
         Authorization: "token " + req.cookies.token,
       },
-    }).then((response) => {
-      console.log("Returning UserID: " + response.data.id);
-      res.send(JSON.stringify({ userid: response.data.id }));
+    }).then(async (response) => {
+	console.log("Returning UserID: " + response.data.id);
+	res.cookie("userId", response.data.id, { maxAge: 3600000});
+	res.send(JSON.stringify({ userid: response.data.id }));
+	
+	const newUser = {
+	    user_id: response.data.id,
+	    username: response.data.login,
+	    name: response.data.login,
+	    profile_pic: null,
+	    favorite_list: []
+	};
+
+	users = await userCollection.find({user_id: response.data.id}).toArray();
+	if (users.length == 0) {
+	    console.log("Attempt to submit");
+	    const result = await userCollection.insertOne(newUser);
+	}
+	
     });
   }
 });
