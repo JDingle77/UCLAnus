@@ -31,26 +31,17 @@ function NavBarComponent() {
 	    setUserID(response.userid);
 	}
     }
-    async function login(code) {
-	let request = await fetch("http://localhost:4000/login", {
-	    method: "POST",
-	    headers: {
-		"Content-Type": "application/json",
-	    },
-	    credentials: "include",
-	    body: JSON.stringify({
-		authcode: code,
-	    }),
-	}).catch((error) => {
-	    console.error(error);
-	});
-	let response = await request.json();
-	//	console.log("Success!");
-	//	console.log(response.logged);
-	getUserID();
-	if (!response.logged) {
-	    window.location.reload(true);
-	}
+  }
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    const url = window.location.href;
+    const urlParams = new URLSearchParams(new URL(url).search);
+    let code = urlParams.get("code");
+    if (url.includes("?code=")) {
+      searchParams.delete("code");
+      setSearchParams(searchParams);
+      console.log("url code: " + code);
+      login(code);
     }
     const [searchParams, setSearchParams] = useSearchParams();
     useEffect(() => {
@@ -89,6 +80,7 @@ function NavBarComponent() {
 	   SIGN IN
 	   </a>
 	  }
+
                   <div className="bottom-rectangle"></div>
                 </Container>
               </Nav.Link>
