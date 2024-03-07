@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Homepage from "./Homepage/Homepage";
+import Accountpage from "./Accountpage/Accountpage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReviewPage from "./ReviewPage/ReviewPage.js"
 
@@ -14,6 +15,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/review_page" element={<ReviewPage />} />
+        <Route path="/account" element={<Accountpage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
