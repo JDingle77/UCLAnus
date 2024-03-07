@@ -5,16 +5,44 @@ import Rating from "react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
+import {useEffect, useState} from "react";
 
-function RestroomReview() {
-  const filledStar = <FontAwesomeIcon icon={fasStar} />;
-  const emptyStar = <FontAwesomeIcon icon={farStar} />;
+function RestroomReview(props) {
+    const filledStar = <FontAwesomeIcon icon={fasStar} />;
+    const emptyStar = <FontAwesomeIcon icon={farStar} />;
+
+    const [name, setName] = useState("");
+    async function getName() {
+	let request = await fetch("http://localhost:4000/get-user?user_id="+props.data.user_id, {
+	    method: "GET",
+	    headers: {
+		"Content-Type": "application/json",
+		Accept: "application/json",
+	    },
+	    credentials: "include",
+	}).catch((error) => {
+	    console.error(error);
+	    return;
+	});
+	let response = await request.json().catch((error) => {
+	    console.error(error);
+	    return;
+	});
+	if (response) {
+	    console.log(response);
+	    setName(response.name);
+	}
+    }
+
+    useEffect( () => {
+	getName();
+    }, []);
   return (
     <Card>
       <Card.Body>
         <div className="name-rating">
           <hr />
-          <div className="field-header">@JDINGLE</div>
+            <div className="field-header">{name}</div>
           <hr />
           <div className="star-rating">
             <Rating
@@ -22,13 +50,12 @@ function RestroomReview() {
               fullSymbol={filledStar}
               fractions={2}
               readonly
-              initialRating={4}
+              initialRating={props.data.rating}
             />
           </div>
         </div>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          <Card.Text>
+	      {props.data.description}
         </Card.Text>
       </Card.Body>
     </Card>

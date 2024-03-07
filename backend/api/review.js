@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require("uuid");
 const getReviewInfo = async (req, res) => {
   const bathroomId = parseInt(req.query.bathroomId, 10);
   const userId = parseInt(req.query.userId, 10);
-
+    console.log("bathroomId " + bathroomId);
   try {
     const db = await connectToDatabase();
     const reviewCollection = db.collection("reviews");

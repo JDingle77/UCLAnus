@@ -33,16 +33,16 @@ function RestroomReviews() {
       </div>
       <div className="description">
         <div className="address" style={{ justifyContent: "center" }}>
-          <h2 className="subtitle bathroom-name">Semel 3rd</h2>
+            <h2 className="subtitle bathroom-name">{bathroom.building + " " + bathroom.floor}</h2>
           <p>
             <img src={PinEmoji} alt="pin" />{" "}
             <Badge bg="primary" style={{ justifyContent: "center" }}>
-              Semel Institute
+		{bathroom.address}
             </Badge>
           </p>
         </div>
         <RestroomRating
-          data={{ "data.rating": 4, "data.number_ratings": 10 }}
+            data={bathroom}
         />
       </div>
       <div className="description-border"></div>
@@ -60,14 +60,14 @@ function RestroomReviews() {
             {" "}
             <WcIcon />{" "}
           </div>
-          <Badge bg="dark">Gender Inclusive</Badge>
+            <Badge bg="dark">{get_gender_string(bathroom.genders)}</Badge>
         </p>
         <p>
           <div style={{ color: "grey", transform: "scale(1.3)" }}>
             {" "}
             <DirectionsWalkIcon />{" "}
           </div>
-          <Badge bg="dark"> 50 Feet</Badge>
+            <Badge bg="dark"> {searchParams.get("_dist")} Feet </Badge>
         </p>
       </div>
       {appearReview && (
@@ -93,14 +93,12 @@ function RestroomReviews() {
         </div>
       )}
       <div className="reviews-wrap">
-        <div className="reviews">
-          <RestroomReview />
-          <RestroomReview />
-          <RestroomReview />
-          <RestroomReview />
-          <RestroomReview />
-          <RestroomReview />
-          <RestroomReview />
+          <div className="reviews">
+	      {
+		  reviews.map((review) => {
+		     return <RestroomReview data={review}/>
+		  })
+	      }
         </div>
       </div>
     </div>
