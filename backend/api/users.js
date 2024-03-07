@@ -3,11 +3,19 @@ const { v4: uuidv4 } = require("uuid");
 
 // Function to get review information
 const getUserInfo = async (req, res) => {
-    if (req.cookies && req.cookies.userId && req.cookies.userId !== "undefined") {
+    let user_id = null;
+    console.log(req.query);
+    if (req.query.user_id) {
+	user_id = parseInt(req.query.user_id, 10);
+    }
+    else if (req.cookies && req.cookies.userId && req.cookies.userId !== "undefined") {
+	user_id = parseInt(req.cookies.userId, 10);
+    }
+    if (user_id) {
 	const db = await connectToDatabase();
 	const userCollection = db.collection("users");
 
-	user = await userCollection.findOne({user_id: parseInt(req.cookies.userId, 10)});
+	user = await userCollection.findOne({user_id: user_id});
 
 	if (user) {
 	    res.status(200).json(user);

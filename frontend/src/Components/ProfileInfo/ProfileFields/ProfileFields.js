@@ -40,8 +40,7 @@ function ProfileFields(props) {
 		"Content-Type": "application/json",
 		Accept: "application/json",
 	    },
-	    body: JSON.stringify({value: value}),
-	   
+	    body: JSON.stringify({value: value}),	   
 	    credentials: "include",
 	}).catch((error) => {
 	    console.error(error);
