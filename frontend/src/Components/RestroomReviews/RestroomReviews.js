@@ -18,6 +18,8 @@ import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import ReportModal from "../ReportModal/ReportModal.js";
 import Alert from "react-bootstrap/Alert";
+import LocationProvider from "../../Helpers/LocationProvider"
+import Cookies from 'js-cookie';
 
 function get_gender_string(genders) {
   let str = "";
@@ -40,8 +42,9 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
   const [appearReview, setAppearReview] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
-
+    const [modalShow, setModalShow] = useState(false);
+    const [ratingValue, setRatingValue] = useState(null);
+    const [warningShow, setWarningShow] = useState(false);
   const writeReviewClicked = () => {
     setAppearReview(!appearReview);
   };
@@ -60,7 +63,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviews, setReviews] = useState([]);
   function getInformation() {
-    let bathroom_id = searchParams.get("_id");
+      let bathroom_id = parseInt(searchParams.get("_id"), 10);
     axios
       .get("http://localhost:4000/get-bathroom")
       .then((response) => {
@@ -84,6 +87,33 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
         console.error(error);
       });
   }
+    
+    function submitReview(event) {
+	event.preventDefault();
+	let value = event.target.elements.reviewArea.value;
+	
+	if (ratingValue == null) {
+	    setWarningShow(true);
+	    return false;
+	}
+	else {
+	    let bathroom_id = parseInt(searchParams.get("_id"), 10);
+	    fetch("http://localhost:4000/add-review", {
+		method: "POST",
+		headers: {
+		    "Content-Type": "application/json",
+		    Accept: "application/json",
+		},
+		body: JSON.stringify({userId: Cookies.get("userId"), bathroomId: bathroom_id, rating: ratingValue, description: value}),	   
+		credentials: "include",
+	    }).catch((error) => {
+		console.error(error);
+		return;
+	    }).then((response) => {
+		window.location.reload();
+	    });
+	}
+    }
   useEffect(() => {
     getInformation();
   }, []);
@@ -153,23 +183,31 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             emptySymbol={emptyStar}
             fullSymbol={filledStar}
             fractions={2}
-            onClick={(value) => console.log(value)}
+              onClick={(value) => setRatingValue(value)}
           />
+	    {
+		warningShow ? 
+		    <p style={{color: "red"}}>
+			Please select a rating
+		    </p>
+		: null
+	    }
           <div className="field-header">SELECT YOUR RATING</div>
-          <Form className="text-box">
+            <Form className="text-box" onSubmit={submitReview}>
             <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
+              className="mb-3 text-box"
+              controlId="reviewArea"
             >
               <Form.Control className="review-box" as="textarea" rows={3} />
             </Form.Group>
+	      <Button variant="secondary" type="submit">SUBMIT</Button>
           </Form>
-          <Button variant="secondary">SUBMIT</Button>
+
         </div>
       )}
       <div className="reviews-wrap">
         <div className="reviews">
-          {reviews.map((review) => {
+            {reviews.toReversed().map((review) => {
             return <RestroomReview data={review} />;
           })}
         </div>

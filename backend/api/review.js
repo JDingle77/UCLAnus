@@ -46,7 +46,8 @@ const getReviewInfo = async (req, res) => {
 
 const addReview = async (req, res) => {
   const { bathroomId, userId, rating, description } = req.body;
-
+    console.log("Trying to add review");
+    console.log("Adding bathroom: " + bathroomId);
   try {
     // Validate that required fields are provided
     if (!bathroomId || !userId || !rating) {
