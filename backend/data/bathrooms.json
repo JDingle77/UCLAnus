@@ -8,7 +8,7 @@
   "genders": ["all gender"],
   "rating": null,
   "number_ratings": 0,
-    "photos": ["https://i.imgur.com/hYZhQhj.jpeg", "https://i.imgur.com/hYZhQhj.jpeg", "https://i.imgur.com/hYZhQhj.jpeg"]
+  "photos": []
 },
 {
   "bathroom_id": 2,
@@ -33,5 +33,176 @@
   "rating": null,
   "number_ratings": 0,
   "photos": []
+},
+{
+  "bathroom_id": 4,
+  "address": "10740 Dickson Ct, Los Angeles, CA 90095",
+  "latitude": 34.071853163271854,
+  "longitude": -118.44213368807573,
+  "building": "Powell Library",
+  "floor": 2,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/hYZhQhj", "https://imgur.com/2PN6xiY", "https://imgur.com/JCq1Erk", "https://imgur.com/isiWQ0I"]
+},
+{
+  "bathroom_id": 5,
+  "address": "10745 Dickson Ct, Los Angeles, CA 90095",
+  "latitude": 34.072997364583685,
+  "longitude": -118.44213368807557,
+  "building": "Royce Hall",
+  "floor": 3,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/n8UiHmW", "https://imgur.com/PisMLrO", "https://imgur.com/9w121kB"]
+},
+{
+  "bathroom_id": 6,
+  "address": "Bruin Walk, Los Angeles, CA 90095",
+  "latitude": 34.07134213669852,
+  "longitude": -118.44578949587425,
+  "building": "John Wooden Center",
+  "floor": 1,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/gf7f11e", "https://imgur.com/gXVmeg2", "https://imgur.com/MDVYWjy", "https://imgur.com/kiOSyQC"]
+},
+{
+  "bathroom_id": 7,
+  "address": "220 Westwood Plaza, Los Angeles, CA 90095",
+  "latitude": 34.071804324713085,
+  "longitude": -118.44402193040412,
+  "building": "Student Activities Center",
+  "floor": 1,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/bH0SnYL", "https://imgur.com/ytp4wjg", "https://imgur.com/9Nz26Wg"]
+},
+{
+  "bathroom_id": 8,
+  "address": "415 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.071100960306545,
+  "longitude": -118.44111871691159,
+  "building": "Kaplan Hall",
+  "floor": 1,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/hjCCy0Z", "https://imgur.com/52KaGP1", "https://imgur.com/xVd4a6l", "https://imgur.com/bZFmD56"]
+},
+{
+  "bathroom_id": 9,
+  "address": "475 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.07106990116475,
+  "longitude": -118.44178270341894,
+  "building": "Physics and Astronomy Building",
+  "floor": 1,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/K4ZoatZ", "https://imgur.com/NkIpJmS", "https://imgur.com/261pxD8"]
+},
+{
+  "bathroom_id": 10,
+  "address": "502 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.06981996839156,
+  "longitude": -118.4413221475983,
+  "building": "Franz Hall",
+  "floor": 1,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/d4MKXi9", "https://imgur.com/qIub14y", "https://imgur.com/0fCLgBZ", "https://imgur.com/A2vW28w"]
+},
+{
+  "bathroom_id": 11,
+  "address": "595 Charles E Young Dr E, Los Angeles, CA 90095",
+  "latitude": 34.06939122004701,
+  "longitude": -118.4406007322549,
+  "building": "Geology Building",
+  "floor": 3,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/p8BcIJM", "https://imgur.com/GqJGxVt", "https://imgur.com/naduLBJ", "https://imgur.com/dIslONQ"]
+},
+{
+  "bathroom_id": 12,
+  "address": "607 Charles E Young Dr E, Los Angeles, CA 90095",
+  "latitude": 34.0688493953404,
+  "longitude": -118.44147921691165,
+  "building": "Young Hall",
+  "floor": 2,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/7ToAkx3", "https://imgur.com/qgql8jB", "https://imgur.com/0UykTeq", "https://imgur.com/5IPq5Io"]
+},
+{
+  "bathroom_id": 13,
+  "address": "502 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.069757670022696,
+  "longitude": -118.44076420341905,
+  "building": "Pritzker Hall",
+  "floor": 4,
+  "genders": ["all gender"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/G3X0OPj", "https://imgur.com/2UXubB5"]
+},
+{
+  "bathroom_id": 14,
+  "address": "502 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.069757670022696,
+  "longitude": -118.44076420341905,
+  "building": "Pritzker Hall",
+  "floor": 3,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/nxIX5Qm", "https://imgur.com/Ezv8WBs", "https://imgur.com/1yszLbL", "https://imgur.com/8dRK6mD"]
+},
+{
+  "bathroom_id": 15,
+  "address": "617 Charles E Young Dr S, Los Angeles, CA 90095",
+  "latitude": 34.068179397718914,
+  "longitude": -118.44212954574742,
+  "building": "Bombshelter",
+  "floor": 1,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/Sbq3shP", "https://imgur.com/y6RwgRM", "https://imgur.com/Jt1mfuW"]
+},
+{
+  "bathroom_id": 16,
+  "address": "580 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.069372083318015,
+  "longitude": -118.44329284759813,
+  "building": "Boelter Hall",
+  "floor": 5,
+  "genders": ["all gender"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/txYM33Z", "https://imgur.com/OKSYYNq", "https://imgur.com/FKQRaRM","https://imgur.com/22Cnfa6"]
+},
+{
+  "bathroom_id": 17,
+  "address": "580 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.069372083318015,
+  "longitude": -118.44329284759813,
+  "building": "Boelter Hall",
+  "floor": 3,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://imgur.com/afmJmhS", "https://imgur.com/8aJ9Zht", "https://imgur.com/istjfBu"]
 }
+
+
 ]
+
