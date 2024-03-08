@@ -39,7 +39,7 @@ function get_gender_string(genders) {
 }
 function changedDay(curDay) {
     const today = new Date();
-    return (today.getUTCDay()+1 != curDay)
+    return (today.getUTCDay() != curDay)
 }
 function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
@@ -162,7 +162,8 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
         </Button>
         <ReportModal
           show={modalShow}
-          bathroom={bathroom.building + " " + bathroom.floor}
+            bathroom={bathroom.building + " " + bathroom.floor}
+	    data={bathroom}
           onHide={() => setModalShow(false)}
         />
       </div>
