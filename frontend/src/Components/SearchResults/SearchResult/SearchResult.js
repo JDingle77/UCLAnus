@@ -68,7 +68,7 @@ function SearchResult(props) {
             <Badge bg="dark"> {props.distance} Feet</Badge>
           </p>
             <div className="more-info">
-		<a href={"review_page?_id=" + props.data.bathroom_id +"&_dist=" + props.distance}>
+		<a href={"review_page?_id=" + props.data.bathroom_id }>
 		    <Button variant="secondary">{rightArrow}</Button>
 		</a>
           </div>

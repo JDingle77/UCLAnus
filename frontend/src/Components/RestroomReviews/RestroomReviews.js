@@ -35,7 +35,7 @@ function get_gender_string(genders) {
   return str.substring(0, str.length - 2);
 }
 
-function RestroomReviews() {
+function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
   const [appearReview, setAppearReview] = useState(false);
@@ -48,10 +48,13 @@ function RestroomReviews() {
   const [bathroom, setBathroom] = useState({
     building: "",
     floor: "",
+    latitude: 0,
+    longitude: 0,
     address: "",
     rating: null,
     number_ratings: 0,
     genders: ["Male"],
+
   });
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviews, setReviews] = useState([]);
@@ -137,7 +140,7 @@ function RestroomReviews() {
             {" "}
             <DirectionsWalkIcon />{" "}
           </div>
-          <Badge bg="dark"> {searchParams.get("_dist")} Feet </Badge>
+          <Badge bg="dark"> { dist_bathroom(bathroom) } Feet </Badge>
         </p>
       </div>
       {appearReview && (
@@ -171,4 +174,4 @@ function RestroomReviews() {
   );
 }
 
-export default RestroomReviews;
+export default LocationProvider(RestroomReviews);
