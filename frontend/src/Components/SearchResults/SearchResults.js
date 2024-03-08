@@ -9,10 +9,10 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useGeolocated } from "react-geolocated";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import LocationProvider from "../../Helpers/LocationProvider"
 
-function SearchResults() {
+function SearchResults({ userLocation, dist_bathroom }) {
   const marks = [
     {
       value: 1,
@@ -85,21 +85,10 @@ function SearchResults() {
   useEffect(() => {
     getBathrooms();
   }, []);
-  function dist(lat1, lng1, lat2, lng2) {
-    return Math.abs(lat1 - lat2)*364000 + Math.abs(lng1 - lng2) * 288000;
-  }
-    function dist_bathroom(bathroom) {
-	if (coords && isGeolocationAvailable && isGeolocationEnabled) {
-	    return Math.floor(dist(coords.latitude, coords.longitude, bathroom.latitude, bathroom.longitude));
-	}
-	return 0;
-    }
   function isBathroomGood(bathroom) {
     if (bathroom.rating == null || bathroom.rating >= minRating) {
-      if (coords && isGeolocationAvailable && isGeolocationEnabled) {
-          if (dist_bathroom(bathroom) > maxDistance) {
+      if (dist_bathroom(bathroom) > maxDistance) {
 	      return false;
-        }
       }
       
       // search query
@@ -119,13 +108,6 @@ function SearchResults() {
     }
     return false;
   }
-  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
-    useGeolocated({
-      positionOptions: {
-        enableHighAccuracy: false,
-      },
-      userDecisionTimeout: 5000,
-    });
 
   return (
     <div className="content">
@@ -243,10 +225,10 @@ function SearchResults() {
       </div>
       <MapComponent
         bathrooms={bathrooms.filter((bathroom) => isBathroomGood(bathroom))}
-        userCoords={coords}
+        userCoords={userLocation}
       />
     </div>
   );
 }
 
-export default SearchResults;
+export default LocationProvider(SearchResults);

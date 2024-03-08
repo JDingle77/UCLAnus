@@ -35,20 +35,23 @@ function MapComponent({ bathrooms, userCoords }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
+		<a href={"review_page?_id=" + bathroom.bathroom_id}>
       <React.Fragment>
         <Marker 
           ref={markerRef}
           position={{lat: bathroom.latitude, lng: bathroom.longitude }}
           onMouseOver={() => setIsHovered(true)}
           onMouseOut={() => setIsHovered(false)}
+          onClick={() => window.location.href = `review_page?_id=${bathroom.bathroom_id}`}
         />
         { isHovered && (
           <InfoWindow anchor={marker}>
-            <b>{bathroom.building}</b>          
+            <b>{bathroom.building + " " + bathroom.floor}</b>          
           </InfoWindow>
         )
         }
       </React.Fragment>
+      </a>
     );
   };
   
