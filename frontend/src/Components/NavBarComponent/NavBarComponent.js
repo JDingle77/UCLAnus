@@ -69,7 +69,7 @@ function NavBarComponent() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand href="/">
           <img src={PoopEmoji} alt="Poop Emoji" width="90" height="90" />
           <div className="text-on-image">
             <h3>UCLAnus</h3>
