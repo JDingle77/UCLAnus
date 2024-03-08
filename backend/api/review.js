@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require("uuid");
 const getReviewInfo = async (req, res) => {
   const bathroomId = parseInt(req.query.bathroomId, 10);
   const userId = parseInt(req.query.userId, 10);
-    console.log("bathroomId " + bathroomId);
+  console.log("bathroomId " + bathroomId);
   try {
     const db = await connectToDatabase();
     const reviewCollection = db.collection("reviews");
@@ -35,10 +35,12 @@ const getReviewInfo = async (req, res) => {
       res.status(200).json(reviews);
     } else {
       res.status(404).json({ message: "No reviews found" });
+      return;
     }
   } catch (error) {
     console.error("Error getting bathroom info:", error);
     res.status(500).json({ message: "Internal server error" });
+    return;
   }
 };
 
@@ -48,9 +50,10 @@ const addReview = async (req, res) => {
   try {
     // Validate that required fields are provided
     if (!bathroomId || !userId || !rating) {
-      return res.status(400).json({
+      res.status(400).json({
         message: "bathroomId, userId, and rating are required fields.",
       });
+      return;
     }
 
     const db = await connectToDatabase();
@@ -83,7 +86,7 @@ const addReview = async (req, res) => {
       const averageRating = totalReviews > 0 ? totalRating / totalReviews : 0;
       const updatedBathroom = await bathroomCollection.findOneAndUpdate(
         { bathroom_id: bathroomId },
-          { $set: { rating: averageRating , number_ratings: totalReviews+1} },
+        { $set: { rating: averageRating, number_ratings: totalReviews + 1 } },
         { returnDocument: "after" }
       );
 
@@ -92,8 +95,10 @@ const addReview = async (req, res) => {
         review: newReview,
         updatedBathroom,
       });
+      return;
     } else {
       res.status(500).json({ message: "Failed to add review" });
+      return;
     }
   } catch (error) {
     console.error("Error adding review:", error);

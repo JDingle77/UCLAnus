@@ -4,14 +4,14 @@
       "username": "tom",
       "name": "not tom",
       "profile_pic": null,
-    "favorite_list": []
+      "favorite_list": []
   },
   {
       "user_id": 2,
       "username": "stom",
       "name": "second tom",
       "profile_pic": null,
-    "favorite_list": []
+      "favorite_list": []
   },
   {
       "user_id": 3,
