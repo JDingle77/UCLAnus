@@ -16,8 +16,10 @@ const getBathroomInfo = async (req, res) => {
 
       if (bathroomInfo) {
         res.status(200).json(bathroomInfo);
+        return;
       } else {
         res.status(404).json({ message: "Bathroom not found" });
+        return;
       }
     } else {
       // If bathroomId is not provided, retrieve information for all bathrooms
@@ -25,13 +27,16 @@ const getBathroomInfo = async (req, res) => {
 
       if (allBathrooms.length > 0) {
         res.status(200).json(allBathrooms);
+        return;
       } else {
         res.status(404).json({ message: "No bathrooms found" });
+        return;
       }
     }
   } catch (error) {
     console.error("Error getting bathroom info:", error);
     res.status(500).json({ message: "Internal server error" });
+    return;
   }
 };
 
