@@ -17,6 +17,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import ReportModal from "../ReportModal/ReportModal.js";
+import Alert from "react-bootstrap/Alert";
 
 function get_gender_string(genders) {
   let str = "";
@@ -107,6 +108,9 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             </Badge>
           </p>
         </div>
+        <Alert className="danger" variant="danger" show={false}>
+          This restroom has been reported
+        </Alert>
         <RestroomRating data={bathroom} />
       </div>
       <div className="description-border"></div>

@@ -88,6 +88,13 @@
   width: 50%;
 }
 
+.danger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 20px;
+}
+
 .text-box {
   width: 100%;
 }
