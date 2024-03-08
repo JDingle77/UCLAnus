@@ -16,6 +16,7 @@ import Form from "react-bootstrap/Form";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import ReportModal from "../ReportModal/ReportModal.js";
 
 function get_gender_string(genders) {
   let str = "";
@@ -38,6 +39,8 @@ function RestroomReviews() {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
   const [appearReview, setAppearReview] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+
   const writeReviewClicked = () => {
     setAppearReview(!appearReview);
   };
@@ -105,12 +108,21 @@ function RestroomReviews() {
       </div>
       <div className="description-border"></div>
       <div className="actions">
-        <Button variant="secondary" onClick={writeReviewClicked}>
+        <Button
+          variant="secondary"
+          active={appearReview}
+          onClick={writeReviewClicked}
+        >
           <StarBorderIcon /> WRITE A REVIEW
         </Button>
-        <Button variant="secondary">
+        <Button variant="secondary" onClick={() => setModalShow(true)}>
           <CampaignOutlinedIcon /> REPORT
         </Button>
+        <ReportModal
+          show={modalShow}
+          bathroom={bathroom.building + " " + bathroom.floor}
+          onHide={() => setModalShow(false)}
+        />
       </div>
       <div className="general">
         <p>
