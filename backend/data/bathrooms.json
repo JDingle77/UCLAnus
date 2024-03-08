@@ -8,7 +8,7 @@
   "genders": ["all gender"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/hYZhQhj"]
+    "photos": ["https://i.imgur.com/hYZhQhj.jpeg", "https://i.imgur.com/hYZhQhj.jpeg", "https://i.imgur.com/hYZhQhj.jpeg"]
 },
 {
   "bathroom_id": 2,

@@ -37,7 +37,10 @@ function get_gender_string(genders) {
   }
   return str.substring(0, str.length - 2);
 }
-
+function changedDay(curDay) {
+    const today = new Date();
+    return (today.getUTCDay()+1 != curDay)
+}
 function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
@@ -58,7 +61,8 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
     rating: null,
     number_ratings: 0,
     genders: ["Male"],
-
+      photos: [],
+      reported: -1,
   });
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviews, setReviews] = useState([]);
@@ -120,11 +124,12 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
 
   return (
     <div className="restroom-reviews">
-      <div className="images">
-        <img src="https://placehold.co/180" alt="bathroom" />
-        <img src="https://placehold.co/180" alt="bathroom" />
-        <img src="https://placehold.co/180" alt="bathroom" />
-        <img src="https://placehold.co/180" alt="bathroom" />
+	<div className="images">
+	    {
+		bathroom.photos.map((image_link) => {
+		    return <img src={image_link} alt="bathroom" />;
+		})
+	    }
       </div>
       <div className="description">
         <div className="address" style={{ justifyContent: "center" }}>
@@ -138,8 +143,8 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             </Badge>
           </p>
         </div>
-        <Alert className="danger" variant="danger" show={false}>
-          This restroom has been reported
+          <Alert className="danger" variant="danger" show={!changedDay(bathroom.reported)}>
+          This restroom has been reported today
         </Alert>
         <RestroomRating data={bathroom} />
       </div>
