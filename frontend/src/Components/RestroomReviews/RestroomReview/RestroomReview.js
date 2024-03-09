@@ -39,7 +39,8 @@ function RestroomReview(props) {
 
   useEffect(() => {
     getName();
-  }, []);
+  });
+
   return (
     <Card>
       <Card.Body>

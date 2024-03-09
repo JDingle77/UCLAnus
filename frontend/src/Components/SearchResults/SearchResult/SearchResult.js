@@ -1,9 +1,6 @@
 import React from "react";
 import "./SearchResult.css";
 import PinEmoji from "../../Images/pin.png";
-import HandDryer from "../../Images/air.png";
-import Accessible from "../../Images/accessible.png";
-import Backpack from "../../Images/backpack.png";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import RestroomRating from "../../RestroomRating/RestroomRating";
