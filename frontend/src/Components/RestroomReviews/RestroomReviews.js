@@ -213,7 +213,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
       )}
       <div className="reviews-wrap">
         <div className="reviews">
-            {reviews.toReversed().map((review) => {
+            {reviews.slice().reverse().map((review) => {
             return <RestroomReview data={review} />;
           })}
         </div>
