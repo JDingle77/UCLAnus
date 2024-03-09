@@ -8,7 +8,6 @@ const favoriteController = require("./api/favorite");
 const router = express.Router();
 
 router.get("/get-bathroom", bathroomController.getBathroomInfo);
-router.put("/report-bathroom/:bathroomId", bathroomController.reportBathroom);
 
 router.get("/get-review", reviewController.getReviewInfo);
 router.post("/add-review", reviewController.addReview);
