@@ -227,7 +227,6 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             <p> {bookMark} ADD TO FAVORITES </p>
           )}
         </Button>
-        <Button variant="secondary">{bookMark} ADD TO FAVORITES</Button>
         <Button variant="secondary" onClick={() => setModalShow(true)}>
           <CampaignOutlinedIcon /> REPORT
         </Button>
