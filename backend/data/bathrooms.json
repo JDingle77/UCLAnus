@@ -1,44 +1,6 @@
-[{
+[
+{
   "bathroom_id": 1,
-  "address": "123 bruh st.",
-  "latitude": 34.054000,
-  "longitude": -118.409010,
-  "building": "Boelter Hall",
-  "floor": 5,
-  "genders": ["all gender"],
-  "rating": null,
-  "number_ratings": 0,
-  "photos": [],
-  "reported": -1
-},
-{
-  "bathroom_id": 2,
-  "address": "123 yeet ave",
-  "latitude": 34.069021,
-  "longitude": -118.443083,
-  "building": "Boelter Hall",
-  "floor": 3,
-  "genders": ["male"],
-  "rating": null,
-  "number_ratings": 0,
-  "photos": [],
-  "reported": -1
-},
-{
-  "bathroom_id": 3,
-  "address": "330 De Neve Dr",
-  "latitude": 34.0726165,
-  "longitude": -118.4501264,
-  "building": "Covel Commons",
-  "floor": 3,
-  "genders": ["male", "female", "all gender"],
-  "rating": null,
-  "number_ratings": 0,
-  "photos": [],
-  "reported": -1
-},
-{
-  "bathroom_id": 4,
   "address": "10740 Dickson Ct",
   "latitude": 34.071853163271854,
   "longitude": -118.44213368807573,
@@ -51,7 +13,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 5,
+  "bathroom_id": 2,
   "address": "10745 Dickson Ct",
   "latitude": 34.072997364583685,
   "longitude": -118.44213368807557,
@@ -64,7 +26,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 6,
+  "bathroom_id": 3,
   "address": "Bruin Walk",
   "latitude": 34.07134213669852,
   "longitude": -118.44578949587425,
@@ -77,7 +39,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 7,
+  "bathroom_id": 4,
   "address": "220 Westwood Plaza",
   "latitude": 34.071804324713085,
   "longitude": -118.44402193040412,
@@ -90,7 +52,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 8,
+  "bathroom_id": 5,
   "address": "415 Portola Plaza",
   "latitude": 34.071100960306545,
   "longitude": -118.44111871691159,
@@ -103,7 +65,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 9,
+  "bathroom_id": 6,
   "address": "475 Portola Plaza",
   "latitude": 34.07106990116475,
   "longitude": -118.44178270341894,
@@ -116,7 +78,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 10,
+  "bathroom_id": 7,
   "address": "502 Portola Plaza",
   "latitude": 34.06981996839156,
   "longitude": -118.4413221475983,
@@ -129,7 +91,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 11,
+  "bathroom_id": 8,
   "address": "595 Charles E Young Dr E",
   "latitude": 34.06939122004701,
   "longitude": -118.4406007322549,
@@ -142,7 +104,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 12,
+  "bathroom_id": 9,
   "address": "607 Charles E Young Dr E",
   "latitude": 34.0688493953404,
   "longitude": -118.44147921691165,
@@ -155,7 +117,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 13,
+  "bathroom_id": 10,
   "address": "502 Portola Plaza",
   "latitude": 34.069757670022696,
   "longitude": -118.44076420341905,
@@ -168,7 +130,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 14,
+  "bathroom_id": 11,
   "address": "502 Portola Plaza",
   "latitude": 34.069757670022696,
   "longitude": -118.44076420341905,
@@ -181,7 +143,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 15,
+  "bathroom_id": 12,
   "address": "617 Charles E Young Dr S",
   "latitude": 34.068179397718914,
   "longitude": -118.44212954574742,
@@ -194,7 +156,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 16,
+  "bathroom_id": 13,
   "address": "580 Portola Plaza",
   "latitude": 34.069372083318015,
   "longitude": -118.44329284759813,
@@ -207,7 +169,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 17,
+  "bathroom_id": 14,
   "address": "580 Portola Plaza",
   "latitude": 34.069372083318015,
   "longitude": -118.44329284759813,
@@ -220,7 +182,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 19,
+  "bathroom_id": 15,
   "address": "Portola Plaza",
   "latitude": 34.07309176015287,
   "longitude": -118.4411037169115,
@@ -233,7 +195,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 20,
+  "bathroom_id": 16,
   "address": "308 Charles E Young Dr N",
   "latitude": 34.07314889912212,
   "longitude": -118.44308710341893,
@@ -246,7 +208,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 21,
+  "bathroom_id": 17,
   "address": "337 Charles E Young Dr E",
   "latitude": 34.07437725691582,
   "longitude": -118.4389086322548,
@@ -259,7 +221,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 22,
+  "bathroom_id": 18,
   "address": "315 Portola Plaza",
   "latitude": 34.07277366095383,
   "longitude": -118.43934026109058,
@@ -272,7 +234,7 @@
   "reported": -1
 },
 {
-  "bathroom_id": 23,
+  "bathroom_id": 19,
   "address": "11282 Portola Plaza",
   "latitude": 34.074328409686316,
   "longitude": -118.44007380341894,
