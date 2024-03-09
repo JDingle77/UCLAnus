@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .bathroom-img {
@@ -52,6 +53,12 @@
 .bottom-border {
   margin-top: 10px;
   border: 1px solid #d9e0e7;
+}
+
+.button-panel {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .more-info {

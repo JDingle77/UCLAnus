@@ -11,7 +11,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark, faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import Form from "react-bootstrap/Form";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -37,10 +37,14 @@ function get_gender_string(genders) {
   }
   return str.substring(0, str.length - 2);
 }
-
+function changedDay(curDay) {
+    const today = new Date();
+    return (today.getUTCDay() != curDay)
+}
 function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
+  const bookMark = <FontAwesomeIcon icon={faBookmark} />
   const [appearReview, setAppearReview] = useState(false);
     const [modalShow, setModalShow] = useState(false);
     const [ratingValue, setRatingValue] = useState(null);
@@ -58,7 +62,8 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
     rating: null,
     number_ratings: 0,
     genders: ["Male"],
-
+      photos: [],
+      reported: -1,
   });
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviews, setReviews] = useState([]);
@@ -120,11 +125,12 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
 
   return (
     <div className="restroom-reviews">
-      <div className="images">
-        <img src="https://placehold.co/180" alt="bathroom" />
-        <img src="https://placehold.co/180" alt="bathroom" />
-        <img src="https://placehold.co/180" alt="bathroom" />
-        <img src="https://placehold.co/180" alt="bathroom" />
+	<div className="images">
+	    {
+		bathroom.photos.map((image_link) => {
+		    return <img src={image_link} alt="bathroom" />;
+		})
+	    }
       </div>
       <div className="description">
         <div className="address" style={{ justifyContent: "center" }}>
@@ -138,8 +144,8 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             </Badge>
           </p>
         </div>
-        <Alert className="danger" variant="danger" show={false}>
-          This restroom has been reported
+          <Alert className="danger" variant="danger" show={!changedDay(bathroom.reported)}>
+          This restroom has been reported today
         </Alert>
         <RestroomRating data={bathroom} />
       </div>
@@ -152,12 +158,16 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
         >
           <StarBorderIcon /> WRITE A REVIEW
         </Button>
+        <Button variant="secondary">
+          {bookMark} ADD TO FAVORITES
+        </Button>
         <Button variant="secondary" onClick={() => setModalShow(true)}>
           <CampaignOutlinedIcon /> REPORT
         </Button>
         <ReportModal
           show={modalShow}
-          bathroom={bathroom.building + " " + bathroom.floor}
+            bathroom={bathroom.building + " " + bathroom.floor}
+	    data={bathroom}
           onHide={() => setModalShow(false)}
         />
       </div>
@@ -207,7 +217,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
       )}
       <div className="reviews-wrap">
         <div className="reviews">
-            {reviews.toReversed().map((review) => {
+            {reviews.slice().reverse().map((review) => {
             return <RestroomReview data={review} />;
           })}
         </div>
