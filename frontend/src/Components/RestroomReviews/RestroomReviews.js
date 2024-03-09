@@ -11,15 +11,18 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
-import { faBookmark, faStar as farStar } from "@fortawesome/free-regular-svg-icons";
+import {
+  faBookmark,
+  faStar as farStar,
+} from "@fortawesome/free-regular-svg-icons";
 import Form from "react-bootstrap/Form";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import ReportModal from "../ReportModal/ReportModal.js";
 import Alert from "react-bootstrap/Alert";
-import LocationProvider from "../../Helpers/LocationProvider"
-import Cookies from 'js-cookie';
+import LocationProvider from "../../Helpers/LocationProvider";
+import Cookies from "js-cookie";
 
 function get_gender_string(genders) {
   let str = "";
@@ -38,17 +41,17 @@ function get_gender_string(genders) {
   return str.substring(0, str.length - 2);
 }
 function changedDay(curDay) {
-    const today = new Date();
-    return (today.getUTCDay() != curDay)
+  const today = new Date();
+  return today.getUTCDay() != curDay;
 }
 function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
-  const bookMark = <FontAwesomeIcon icon={faBookmark} />
+  const bookMark = <FontAwesomeIcon icon={faBookmark} />;
   const [appearReview, setAppearReview] = useState(false);
-    const [modalShow, setModalShow] = useState(false);
-    const [ratingValue, setRatingValue] = useState(null);
-    const [warningShow, setWarningShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [ratingValue, setRatingValue] = useState(null);
+  const [warningShow, setWarningShow] = useState(false);
   const writeReviewClicked = () => {
     setAppearReview(!appearReview);
   };
@@ -62,13 +65,13 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
     rating: null,
     number_ratings: 0,
     genders: ["Male"],
-      photos: [],
-      reported: -1,
+    photos: [],
+    reported: -1,
   });
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviews, setReviews] = useState([]);
   function getInformation() {
-      let bathroom_id = parseInt(searchParams.get("_id"), 10);
+    let bathroom_id = parseInt(searchParams.get("_id"), 10);
     axios
       .get("http://localhost:4000/get-bathroom")
       .then((response) => {
@@ -92,45 +95,49 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
         console.error(error);
       });
   }
-    
-    function submitReview(event) {
-	event.preventDefault();
-	let value = event.target.elements.reviewArea.value;
-	
-	if (ratingValue == null) {
-	    setWarningShow(true);
-	    return false;
-	}
-	else {
-	    let bathroom_id = parseInt(searchParams.get("_id"), 10);
-	    fetch("http://localhost:4000/add-review", {
-		method: "POST",
-		headers: {
-		    "Content-Type": "application/json",
-		    Accept: "application/json",
-		},
-		body: JSON.stringify({userId: Cookies.get("userId"), bathroomId: bathroom_id, rating: ratingValue, description: value}),	   
-		credentials: "include",
-	    }).catch((error) => {
-		console.error(error);
-		return;
-	    }).then((response) => {
-		window.location.reload();
-	    });
-	}
+
+  function submitReview(event) {
+    event.preventDefault();
+    let value = event.target.elements.reviewArea.value;
+
+    if (ratingValue == null) {
+      setWarningShow(true);
+      return false;
+    } else {
+      let bathroom_id = parseInt(searchParams.get("_id"), 10);
+      fetch("http://localhost:4000/add-review", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          userId: Cookies.get("userId"),
+          bathroomId: bathroom_id,
+          rating: ratingValue,
+          description: value,
+        }),
+        credentials: "include",
+      })
+        .catch((error) => {
+          console.error(error);
+          return;
+        })
+        .then((response) => {
+          window.location.reload();
+        });
     }
+  }
   useEffect(() => {
     getInformation();
   }, []);
 
   return (
     <div className="restroom-reviews">
-	<div className="images">
-	    {
-		bathroom.photos.map((image_link) => {
-		    return <img src={image_link} alt="bathroom" />;
-		})
-	    }
+      <div className="images">
+        {bathroom.photos.map((image_link) => {
+          return <img src={image_link} alt="bathroom" />;
+        })}
       </div>
       <div className="description">
         <div className="address" style={{ justifyContent: "center" }}>
@@ -144,7 +151,11 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             </Badge>
           </p>
         </div>
-          <Alert className="danger" variant="danger" show={!changedDay(bathroom.reported)}>
+        <Alert
+          className="danger"
+          variant="danger"
+          show={!changedDay(bathroom.reported)}
+        >
           This restroom has been reported today
         </Alert>
         <RestroomRating data={bathroom} />
@@ -158,16 +169,14 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
         >
           <StarBorderIcon /> WRITE A REVIEW
         </Button>
-        <Button variant="secondary">
-          {bookMark} ADD TO FAVORITES
-        </Button>
+        <Button variant="secondary">{bookMark} ADD TO FAVORITES</Button>
         <Button variant="secondary" onClick={() => setModalShow(true)}>
           <CampaignOutlinedIcon /> REPORT
         </Button>
         <ReportModal
           show={modalShow}
-            bathroom={bathroom.building + " " + bathroom.floor}
-	    data={bathroom}
+          bathroom={bathroom.building + " " + bathroom.floor}
+          data={bathroom}
           onHide={() => setModalShow(false)}
         />
       </div>
@@ -184,7 +193,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             {" "}
             <DirectionsWalkIcon />{" "}
           </div>
-          <Badge bg="dark"> { dist_bathroom(bathroom) } Feet </Badge>
+          <Badge bg="dark"> {dist_bathroom(bathroom)} Feet </Badge>
         </p>
       </div>
       {appearReview && (
@@ -193,33 +202,30 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             emptySymbol={emptyStar}
             fullSymbol={filledStar}
             fractions={2}
-              onClick={(value) => setRatingValue(value)}
+            onClick={(value) => setRatingValue(value)}
           />
-	    {
-		warningShow ? 
-		    <p style={{color: "red"}}>
-			Please select a rating
-		    </p>
-		: null
-	    }
+          {warningShow ? (
+            <p style={{ color: "red" }}>Please select a rating</p>
+          ) : null}
           <div className="field-header">SELECT YOUR RATING</div>
-            <Form className="text-box" onSubmit={submitReview}>
-            <Form.Group
-              className="mb-3 text-box"
-              controlId="reviewArea"
-            >
+          <Form className="text-box" onSubmit={submitReview}>
+            <Form.Group className="mb-3 text-box" controlId="reviewArea">
               <Form.Control className="review-box" as="textarea" rows={3} />
             </Form.Group>
-	      <Button variant="secondary" type="submit">SUBMIT</Button>
+            <Button variant="secondary" type="submit">
+              SUBMIT
+            </Button>
           </Form>
-
         </div>
       )}
       <div className="reviews-wrap">
         <div className="reviews">
-            {reviews.slice().reverse().map((review) => {
-            return <RestroomReview data={review} />;
-          })}
+          {reviews
+            .slice()
+            .reverse()
+            .map((review) => {
+              return <RestroomReview data={review} />;
+            })}
         </div>
       </div>
     </div>
