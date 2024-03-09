@@ -48,7 +48,7 @@ const getFavoriteBathroomInfo = async (req, res) => {
   }
 };
 
-const addFavoriteBathroom = async (req, res) => {
+const changeFavoriteBathroom = async (req, res) => {
   const { bathroomId, userId } = req.body;
 
   try {
@@ -72,8 +72,17 @@ const addFavoriteBathroom = async (req, res) => {
       res.status(200).json({ message: "Bathroom added to favorites" });
       return;
     } else {
-      res.status(404).json({ message: "Bathroom already exists in favorites" });
-      return;
+      // Bathroom exists in favorites so we remove it
+      const remove = await userCollection.updateOne(
+        { user_id: userId },
+        {
+          $pull: { favorite_list: bathroomId },
+        }
+      );
+      if (remove.modifiedCount === 1) {
+        res.status(200).json({ message: "Bathroom unfavorited" });
+        return;
+      }
     }
   } catch (error) {
     console.error("Error adding favorite bathroom:", error);
@@ -84,6 +93,6 @@ const addFavoriteBathroom = async (req, res) => {
 
 module.exports = {
   getFavoriteBathroomInfo,
-  addFavoriteBathroom,
+  changeFavoriteBathroom,
   // Add more functions as needed...
 };
