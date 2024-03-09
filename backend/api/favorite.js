@@ -3,13 +3,11 @@ const { connectToDatabase } = require("../mongo.js");
 
 // Function to get favorite bathroom information
 const getFavoriteBathroomInfo = async (req, res) => {
-  const userId = parseInt(req.cookies.userId, 10);
-
+  const userId = parseInt(req.query.userId, 10);
   try {
     const db = await connectToDatabase();
     const userCollection = db.collection("users");
     const bathroomCollection = db.collection("bathrooms");
-    console.log(userId);
     if (!userId) {
       res.status(400).json({ message: "Missing userId" });
       return;
@@ -40,7 +38,7 @@ const getFavoriteBathroomInfo = async (req, res) => {
       })
       .toArray();
 
-    res.status(200).json({ favoriteBathrooms });
+    res.status(200).json(favoriteBathrooms);
   } catch (error) {
     console.error("Error getting favorite bathroom info:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -51,6 +49,12 @@ const getFavoriteBathroomInfo = async (req, res) => {
 const changeFavoriteBathroom = async (req, res) => {
   const { bathroomId, userId } = req.body;
 
+const addFavoriteBathroom = async (req, res) => {
+  let { bathroomId, userId } = req.body;
+
+    userId = parseInt(userId, 10);
+    bathroomId = parseInt(bathroomId, 10);
+    
   try {
     const db = await connectToDatabase();
     const userCollection = db.collection("users");
@@ -60,6 +64,7 @@ const changeFavoriteBathroom = async (req, res) => {
       return;
     }
 
+      console.log("TRYING TO ADD DID IT WORK");
     const result = await userCollection.updateOne(
       { user_id: userId },
       {

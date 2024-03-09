@@ -69,7 +69,36 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
     reported: -1,
   });
   const [searchParams, setSearchParams] = useSearchParams();
-  const [reviews, setReviews] = useState([]);
+    const [reviews, setReviews] = useState([]);
+    const [favorite, setFavorite] = useState(false);
+
+    function containsBathroomId(bathroom_list) {
+	let bathroom_id = parseInt(searchParams.get("_id"), 10);
+	for (let i = 0; i < bathroom_list.length; i++) {
+	    if (bathroom_list[i].bathroom_id === bathroom_id) {
+		console.log("Returning true");
+		return true;
+	    }
+	}
+	return false;
+    }
+
+    function getFavorites() {
+	let userId = Cookies.get("userId");
+	axios
+	    .get("http://localhost:4000/get-favorite?userId=" + userId)
+	    .then((response) => {
+		setFavorite(containsBathroomId(response.data));
+		console.log("Show Favorites: ");
+		console.log(response.data);
+	    })
+	    .catch((error) => {
+		console.error(error);
+	    });
+    }
+
+
+
   function getInformation() {
     let bathroom_id = parseInt(searchParams.get("_id"), 10);
     axios
@@ -129,7 +158,8 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
     }
   }
   useEffect(() => {
-    getInformation();
+      getInformation();
+      getFavorites();
   }, []);
 
   return (
