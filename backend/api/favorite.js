@@ -47,14 +47,11 @@ const getFavoriteBathroomInfo = async (req, res) => {
 };
 
 const changeFavoriteBathroom = async (req, res) => {
-  const { bathroomId, userId } = req.body;
-
-const addFavoriteBathroom = async (req, res) => {
   let { bathroomId, userId } = req.body;
 
-    userId = parseInt(userId, 10);
-    bathroomId = parseInt(bathroomId, 10);
-    
+  userId = parseInt(userId, 10);
+  bathroomId = parseInt(bathroomId, 10);
+
   try {
     const db = await connectToDatabase();
     const userCollection = db.collection("users");
@@ -64,7 +61,7 @@ const addFavoriteBathroom = async (req, res) => {
       return;
     }
 
-      console.log("TRYING TO ADD DID IT WORK");
+    console.log("TRYING TO ADD DID IT WORK");
     const result = await userCollection.updateOne(
       { user_id: userId },
       {
@@ -77,7 +74,6 @@ const addFavoriteBathroom = async (req, res) => {
       res.status(200).json({ message: "Bathroom added to favorites" });
       return;
     } else {
-      // Bathroom exists in favorites so we remove it
       const remove = await userCollection.updateOne(
         { user_id: userId },
         {
