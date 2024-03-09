@@ -1,7 +1,28 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-
+import Cookies from 'js-cookie';
+import { useEffect, setState } from 'react';
 function ReportModal(props) {
+    function submit_report() {
+	let today = new Date();
+	console.log(props.data);
+	fetch("http://localhost:4000/submit-report", {
+	    method: "POST",
+	    headers: {
+		"Content-Type": "application/json",
+		Accept: "application/json",
+	    },
+	    body: JSON.stringify({userId: Cookies.get("userId"), bathroomId: props.data.bathroom_id, reported: today.getUTCDay()}),
+	    credentials: "include",
+	}).catch((error) => {
+	    console.error(error);
+	    return;
+	}).then((response) => {
+	    props.onHide();
+	});
+	window.location.reload();
+    }
+
   return (
     <Modal
       {...props}
@@ -19,7 +40,7 @@ function ReportModal(props) {
         <p>Confirm you want to submit a report</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Report bathroom</Button>
+        <Button onClick={submit_report}>Report bathroom</Button>
       </Modal.Footer>
     </Modal>
   );

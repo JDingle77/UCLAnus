@@ -106,7 +106,27 @@ const addReview = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+const addReport = async (req, res) => {
+    const {bathroomId, userId, reported} = req.body;
+    console.log(bathroomId);
+    console.log(userId);
+    console.log(reported);
+    if (!bathroomId || !userId || !reported) {
+	res.status(400).json({
+            message: "bathroomId, userId, and rating are required fields.",
+	});
+	return;
+    }
+    const db = await connectToDatabase();
+    const bathroomCollection = db.collection("bathrooms");
 
+    const updatedReport = bathroomCollection.findOneAndUpdate(
+	{ bathroom_id: bathroomId},
+	{ $set: { reported: reported } }
+    );
+    res.status(200);
+
+};
 // Function to generate a unique review_id
 function generateUniqueReviewId() {
   return uuidv4();
@@ -114,6 +134,7 @@ function generateUniqueReviewId() {
 
 module.exports = {
   getReviewInfo,
-  addReview,
+    addReview,
+    addReport,
   // Add more functions as needed...
 };
