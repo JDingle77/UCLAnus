@@ -1,23 +1,25 @@
 import "./MapComponent.css";
-import React from 'react';
-import Container from "react-bootstrap/Container";
-import {APIProvider, Map, Marker, Overlay, useMarkerRef, InfoWindow } from '@vis.gl/react-google-maps';
-import { useState } from 'react';
-let { mapsApiKey, mapsSignature } = require("./mapsapikey.json");
-
-const libraries = ['places']
-// defaults
+import React from "react";
+import {
+  APIProvider,
+  Map,
+  Marker,
+  useMarkerRef,
+  InfoWindow,
+} from "@vis.gl/react-google-maps";
+import { useState } from "react";
+let { mapsApiKey } = require("./mapsapikey.json");
 
 function MapComponent({ bathrooms, userCoords }) {
   let center = {
     lat: 34.069021,
-    lng: -118.443083
+    lng: -118.443083,
   };
 
   if (userCoords != null) {
     center = {
       lat: userCoords.latitude,
-      lng: userCoords.longitude
+      lng: userCoords.longitude,
     };
   }
 
@@ -35,44 +37,35 @@ function MapComponent({ bathrooms, userCoords }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-		<a href={"review_page?_id=" + bathroom.bathroom_id}>
-      <React.Fragment>
-        <Marker 
-          ref={markerRef}
-          position={{lat: bathroom.latitude, lng: bathroom.longitude }}
-          onMouseOver={() => setIsHovered(true)}
-          onMouseOut={() => setIsHovered(false)}
-          onClick={() => window.location.href = `review_page?_id=${bathroom.bathroom_id}`}
-        />
-        { isHovered && (
-          <InfoWindow anchor={marker}>
-            <b>{bathroom.building + " " + bathroom.floor}</b>          
-          </InfoWindow>
-        )
-        }
-      </React.Fragment>
+      <a href={"review_page?_id=" + bathroom.bathroom_id}>
+        <React.Fragment>
+          <Marker
+            ref={markerRef}
+            position={{ lat: bathroom.latitude, lng: bathroom.longitude }}
+            onMouseOver={() => setIsHovered(true)}
+            onMouseOut={() => setIsHovered(false)}
+            onClick={() =>
+              (window.location.href = `review_page?_id=${bathroom.bathroom_id}`)
+            }
+          />
+          {isHovered && (
+            <InfoWindow anchor={marker}>
+              <b>{bathroom.building + " " + bathroom.floor}</b>
+            </InfoWindow>
+          )}
+        </React.Fragment>
       </a>
     );
   };
-  
+
   return (
     <div id="map" style={{ width: "70%" }}>
       <APIProvider apiKey={mapsApiKey}>
-        <Map
-          defaultCenter={center}
-          defaultZoom={15}
-        >
-      { bathrooms.map((bathroom, index) => {
-
-        return ( 
-          <HoverMarker bathroom={bathroom} index={index} />
-        )
-      }
-      )}
-      {userCoords != null && (
-        <Marker position={center} icon={customIcon}/>
-      )
-      }
+        <Map defaultCenter={center} defaultZoom={15}>
+          {bathrooms.map((bathroom, index) => {
+            return <HoverMarker bathroom={bathroom} index={index} />;
+          })}
+          {userCoords != null && <Marker position={center} icon={customIcon} />}
         </Map>
       </APIProvider>
     </div>

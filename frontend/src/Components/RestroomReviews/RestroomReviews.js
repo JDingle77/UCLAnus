@@ -43,7 +43,7 @@ function get_gender_string(genders) {
 }
 function changedDay(curDay) {
   const today = new Date();
-  return today.getUTCDay() != curDay;
+  return today.getUTCDay() !== curDay;
 }
 function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
@@ -72,7 +72,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
     photos: [],
     reported: -1,
   });
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [reviews, setReviews] = useState([]);
   const [favorite, setFavorite] = useState(false);
 
@@ -108,7 +108,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
       .then((response) => {
         console.log(response);
         for (let i = 0; i < response.data.length; i++) {
-          if (response.data[i].bathroom_id == bathroom_id) {
+          if (response.data[i].bathroom_id === bathroom_id) {
             setBathroom(response.data[i]);
           }
         }
@@ -181,7 +181,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
   useEffect(() => {
     getInformation();
     getFavorites();
-  }, []);
+  });
 
   return (
     <div className="restroom-reviews">
