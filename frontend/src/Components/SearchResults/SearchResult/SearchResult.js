@@ -12,6 +12,9 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import WcIcon from "@mui/icons-material/Wc";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark as faBookmarkFill } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 function get_gender_string(genders) {
   let str = "";
@@ -29,15 +32,53 @@ function get_gender_string(genders) {
   }
   return str.substring(0, str.length - 2);
 }
+
 function SearchResult(props) {
   const rightArrow = <FontAwesomeIcon icon={faArrowRight} />;
   const bookMark = <FontAwesomeIcon icon={faBookmark} />;
+  const yellowBookMark = (
+    <FontAwesomeIcon style={{ color: "yellow" }} icon={faBookmarkFill} />
+  );
+  const [favorite, setFavorite] = useState(false);
+
+  function changeFavorite() {
+    setFavorite(!favorite);
+    let userId = Cookies.get("userId");
+
+    fetch("http://localhost:4000/change-favorite", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        userId: userId,
+        bathroomId: props.data.bathroom_id,
+      }),
+      credentials: "include",
+    }).catch((error) => {
+      console.error(error);
+      return;
+    });
+  }
+
+  useEffect(() => {
+    setFavorite(props.favorite);
+    if (props.favorite) {
+      console.log("Is this setting correctly?");
+    }
+  }, [props.favorite]);
+
   return (
     <div className="search-result-card">
       <div className="search-result">
         <div className="core-info">
           <img
-              src={props.data.photos.length > 0 ?  props.data.photos[0] : "https://placehold.co/180"}
+            src={
+              props.data.photos.length > 0
+                ? props.data.photos[0]
+                : "https://placehold.co/180"
+            }
             alt="bathroom"
             className="bathroom-img"
           />
@@ -69,13 +110,15 @@ function SearchResult(props) {
             </div>
             <Badge bg="dark"> {props.distance} Feet</Badge>
           </p>
-            <div className="more-info">
-    <div className="button-panel">
-      <Button variant="secondary">{bookMark}</Button>
-      <a href={"review_page?_id=" + props.data.bathroom_id }>
-          <Button variant="secondary">{rightArrow}</Button>
-      </a>
-    </div>
+          <div className="more-info">
+            <div className="button-panel">
+              <Button variant="secondary" onClick={changeFavorite}>
+                {favorite ? yellowBookMark : bookMark}
+              </Button>
+              <a href={"review_page?_id=" + props.data.bathroom_id}>
+                <Button variant="secondary">{rightArrow}</Button>
+              </a>
+            </div>
           </div>
         </div>
       </div>

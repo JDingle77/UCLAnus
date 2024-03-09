@@ -15,6 +15,7 @@ import {
   faBookmark,
   faStar as farStar,
 } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark as faBookmarkFill } from "@fortawesome/free-solid-svg-icons";
 import Form from "react-bootstrap/Form";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -48,6 +49,9 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
   const bookMark = <FontAwesomeIcon icon={faBookmark} />;
+  const yellowBookMark = (
+    <FontAwesomeIcon style={{ color: "yellow" }} icon={faBookmarkFill} />
+  );
   const [appearReview, setAppearReview] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [ratingValue, setRatingValue] = useState(null);
@@ -70,6 +74,33 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
   });
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviews, setReviews] = useState([]);
+  const [favorite, setFavorite] = useState(false);
+
+  function containsBathroomId(bathroom_list) {
+    let bathroom_id = parseInt(searchParams.get("_id"), 10);
+    for (let i = 0; i < bathroom_list.length; i++) {
+      if (bathroom_list[i].bathroom_id === bathroom_id) {
+        console.log("Returning true");
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function getFavorites() {
+    let userId = Cookies.get("userId");
+    axios
+      .get("http://localhost:4000/get-favorite?userId=" + userId)
+      .then((response) => {
+        setFavorite(containsBathroomId(response.data));
+        console.log("Show Favorites: ");
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   function getInformation() {
     let bathroom_id = parseInt(searchParams.get("_id"), 10);
     axios
@@ -128,8 +159,28 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
         });
     }
   }
+  function changeFavorite() {
+    setFavorite(!favorite);
+    let bathroom_id = parseInt(searchParams.get("_id"), 10);
+    let userId = Cookies.get("userId");
+
+    fetch("http://localhost:4000/change-favorite", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ userId: userId, bathroomId: bathroom_id }),
+      credentials: "include",
+    }).catch((error) => {
+      console.error(error);
+      return;
+    });
+  }
+
   useEffect(() => {
     getInformation();
+    getFavorites();
   }, []);
 
   return (
@@ -168,6 +219,13 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
           onClick={writeReviewClicked}
         >
           <StarBorderIcon /> WRITE A REVIEW
+        </Button>
+        <Button variant="secondary" onClick={changeFavorite}>
+          {favorite ? (
+            <p> {yellowBookMark} Favorited </p>
+          ) : (
+            <p> {bookMark} ADD TO FAVORITES </p>
+          )}
         </Button>
         <Button variant="secondary">{bookMark} ADD TO FAVORITES</Button>
         <Button variant="secondary" onClick={() => setModalShow(true)}>

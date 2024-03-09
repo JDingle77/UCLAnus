@@ -10,8 +10,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import LocationProvider from "../../Helpers/LocationProvider"
-
+import LocationProvider from "../../Helpers/LocationProvider";
+import Cookies from 'js-cookie';
 function SearchResults({ userLocation, dist_bathroom }) {
   const marks = [
     {
@@ -82,8 +82,26 @@ function SearchResults({ userLocation, dist_bathroom }) {
       });
   }
 
+    const [favoritesList, setFavoritesList] = useState([]);
+
+    function getFavorites() {
+	let userId = Cookies.get("userId");
+	axios
+	    .get("http://localhost:4000/get-favorite?userId=" + userId)
+	    .then((response) => {
+		setFavoritesList(response.data);
+		console.log("Show Favorites: ");
+		console.log(response.data);
+	    })
+	    .catch((error) => {
+		console.error(error);
+	    });
+    }
+
+    
   useEffect(() => {
-    getBathrooms();
+      getBathrooms();
+      getFavorites();
   }, []);
   function isBathroomGood(bathroom) {
     if (bathroom.rating == null || bathroom.rating >= minRating) {
@@ -108,7 +126,16 @@ function SearchResults({ userLocation, dist_bathroom }) {
     }
     return false;
   }
-
+    function containsBathroomId(id, bathroom_list) {
+	console.log(bathroom_list);
+	for (let i = 0; i < bathroom_list.length; i++) {
+	    if (bathroom_list[i].bathroom_id === id) {
+		console.log("Returning true");
+		return true;
+	    }
+	}
+	return false;
+    }
   return (
     <div className="content">
       <div className="left-column">
@@ -214,9 +241,7 @@ function SearchResults({ userLocation, dist_bathroom }) {
           <div>
             {bathrooms.map((bathroom) => {
               if (isBathroomGood(bathroom)) {
-                console.log("Props: ");
-                console.log(bathroom);
-                  return <SearchResult data={bathroom} distance={dist_bathroom(bathroom)}/>;
+                  return <SearchResult data={bathroom} distance={dist_bathroom(bathroom)} favorite={containsBathroomId(bathroom.bathroom_id, favoritesList)}/>;
               }
               return null;
             })}
