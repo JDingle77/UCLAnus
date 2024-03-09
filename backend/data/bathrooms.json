@@ -124,7 +124,7 @@
   "building": "Pritzker Hall",
   "floor": 4,
   "genders": ["all gender"],
-  "rating": 3,
+  "rating": null,
   "number_ratings": 0,
   "photos": ["https://i.imgur.com/G3X0OPj.jpeg", "https://i.imgur.com/2UXubB5.jpeg"],
   "reported": -1
@@ -137,7 +137,7 @@
   "building": "Pritzker Hall",
   "floor": 3,
   "genders": ["male"],
-  "rating": null,
+  "rating": 5,
   "number_ratings": 1,
   "photos": ["https://i.imgur.com/nxIX5Qm.jpeg", "https://i.imgur.com/Ezv8WBs.jpeg", "https://i.imgur.com/1yszLbL.jpeg", "https://i.imgur.com/8dRK6mD.jpeg"],
   "reported": -1
