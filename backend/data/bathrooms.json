@@ -8,7 +8,7 @@
   "floor": 2,
   "genders": ["male"],
   "rating": null,
-  "number_ratings": 0,
+  "number_ratings": 1,
   "photos": ["https://i.imgur.com/hYZhQhj.jpeg", "https://i.imgur.com/2PN6xiY.jpeg", "https://i.imgur.com/JCq1Erk.jpeg", "https://i.imgur.com/isiWQ0I.jpeg"],
   "reported": -1
 },
@@ -21,7 +21,7 @@
   "floor": 3,
   "genders": ["male"],
   "rating": null,
-  "number_ratings": 0,
+  "number_ratings": 1,
   "photos": ["https://i.imgur.com/n8UiHmW.jpeg", "https://i.imgur.com/PisMLrO.jpeg", "https://i.imgur.com/9w121kB.jpeg"],
   "reported": -1
 },
@@ -138,7 +138,7 @@
   "floor": 3,
   "genders": ["male"],
   "rating": null,
-  "number_ratings": 0,
+  "number_ratings": 1,
   "photos": ["https://i.imgur.com/nxIX5Qm.jpeg", "https://i.imgur.com/Ezv8WBs.jpeg", "https://i.imgur.com/1yszLbL.jpeg", "https://i.imgur.com/8dRK6mD.jpeg"],
   "reported": -1
 },
@@ -151,7 +151,7 @@
   "floor": 1,
   "genders": ["male"],
   "rating": null,
-  "number_ratings": 0,
+  "number_ratings": 1,
   "photos": ["https://i.imgur.com/Sbq3shP.jpeg", "https://i.imgur.com/y6RwgRM.jpeg", "https://i.imgur.com/Jt1mfuW.jpeg"],
   "reported": -1
 },
@@ -164,7 +164,7 @@
   "floor": 5,
   "genders": ["all gender"],
   "rating": null,
-  "number_ratings": 0,
+  "number_ratings": 1,
   "photos": ["https://i.imgur.com/txYM33Z.jpeg", "https://i.imgur.com/OKSYYNq.jpeg", "https://i.imgur.com/FKQRaRM.jpeg","https://i.imgur.com/22Cnfa6.jpeg"],
   "reported": -1
 },
@@ -177,7 +177,7 @@
   "floor": 3,
   "genders": ["male"],
   "rating": null,
-  "number_ratings": 0,
+  "number_ratings": 1,
   "photos": ["https://i.imgur.com/afmJmhS.jpeg", "https://i.imgur.com/8aJ9Zht.jpeg", "https://i.imgur.com/istjfBu.jpeg"],
   "reported": -1
 },
