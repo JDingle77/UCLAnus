@@ -18,7 +18,7 @@ router.post("/update-name", userController.updateName);
 router.post("/submit-report", reviewController.addReport);
 
 router.get("/get-favorite", favoriteController.getFavoriteBathroomInfo);
-router.post("/add-favorite", favoriteController.addFavoriteBathroom);
+router.post("/change-favorite", favoriteController.changeFavoriteBathroom);
 // Add more routes as needed...
 
 module.exports = router;
