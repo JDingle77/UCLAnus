@@ -55,9 +55,9 @@ const changeFavoriteBathroom = async (req, res) => {
 const addFavoriteBathroom = async (req, res) => {
   let { bathroomId, userId } = req.body;
 
-    userId = parseInt(userId, 10);
-    bathroomId = parseInt(bathroomId, 10);
-    
+  userId = parseInt(userId, 10);
+  bathroomId = parseInt(bathroomId, 10);
+
   try {
     const db = await connectToDatabase();
     const userCollection = db.collection("users");
