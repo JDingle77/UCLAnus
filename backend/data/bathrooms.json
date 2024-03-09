@@ -111,8 +111,8 @@
   "building": "Young Hall",
   "floor": 2,
   "genders": ["male"],
-  "rating": null,
-  "number_ratings": 0,
+  "rating": 5,
+  "number_ratings": 1,
   "photos": ["https://i.imgur.com/7ToAkx3.jpeg", "https://i.imgur.com/qgql8jB.jpeg", "https://i.imgur.com/0UykTeq.jpeg", "https://i.imgur.com/5IPq5Io.jpeg"],
   "reported": -1
 },
