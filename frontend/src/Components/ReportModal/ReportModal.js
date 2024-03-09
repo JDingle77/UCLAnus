@@ -2,8 +2,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Cookies from 'js-cookie';
 import { useEffect, setState } from 'react';
+import alertSignedIn from "../../Helpers/CheckSignedIn"
 function ReportModal(props) {
     function submit_report() {
+      alertSignedIn("report a restroom");
 	let today = new Date();
 	console.log(props.data);
 	fetch("http://localhost:4000/submit-report", {
