@@ -35,11 +35,11 @@ function SearchResult(props) {
       <div className="search-result">
         <div className="core-info">
           <img
-            src="https://placehold.co/180"
+              src={props.data.photos.length > 0 ?  props.data.photos[0] : "https://placehold.co/180"}
             alt="bathroom"
             className="bathroom-img"
           />
-          <div className="address" style={{ justifyContent: "center" }}>
+          <div className="address">
             <h2 className="subtitle bathroom-name">
               {props.data.building + " " + props.data.floor}
             </h2>
