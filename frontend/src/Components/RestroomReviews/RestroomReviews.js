@@ -202,6 +202,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
             emptySymbol={emptyStar}
             fullSymbol={filledStar}
             fractions={2}
+            initialRating={ratingValue}
             onClick={(value) => setRatingValue(value)}
           />
           {warningShow ? (
