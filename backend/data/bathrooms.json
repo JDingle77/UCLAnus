@@ -8,7 +8,8 @@
   "genders": ["all gender"],
   "rating": null,
   "number_ratings": 0,
-  "photos": []
+  "photos": [],
+  "reported": -1
 },
 {
   "bathroom_id": 2,
@@ -20,7 +21,8 @@
   "genders": ["male"],
   "rating": 4.3,
   "number_ratings": 3,
-  "photos": []
+  "photos": [],
+  "reported": -1
 },
 {
   "bathroom_id": 3,
@@ -32,7 +34,8 @@
   "genders": ["male", "female", "all gender"],
   "rating": null,
   "number_ratings": 0,
-  "photos": []
+  "photos": [],
+  "reported": -1
 },
 {
   "bathroom_id": 4,
@@ -44,7 +47,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/hYZhQhj", "https://imgur.com/2PN6xiY", "https://imgur.com/JCq1Erk", "https://imgur.com/isiWQ0I"]
+  "photos": ["https://i.imgur.com/hYZhQhj.jpeg", "https://i.imgur.com/2PN6xiY.jpeg", "https://i.imgur.com/JCq1Erk.jpeg", "https://i.imgur.com/isiWQ0I.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 5,
@@ -56,7 +60,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/n8UiHmW", "https://imgur.com/PisMLrO", "https://imgur.com/9w121kB"]
+  "photos": ["https://i.imgur.com/n8UiHmW.jpeg", "https://i.imgur.com/PisMLrO.jpeg", "https://i.imgur.com/9w121kB.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 6,
@@ -68,7 +73,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/gf7f11e", "https://imgur.com/gXVmeg2", "https://imgur.com/MDVYWjy", "https://imgur.com/kiOSyQC"]
+  "photos": ["https://i.imgur.com/gf7f11e.jpeg", "https://i.imgur.com/gXVmeg2.jpeg", "https://i.imgur.com/MDVYWjy.jpeg", "https://i.imgur.com/kiOSyQC.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 7,
@@ -80,7 +86,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/bH0SnYL", "https://imgur.com/ytp4wjg", "https://imgur.com/9Nz26Wg"]
+  "photos": ["https://i.imgur.com/bH0SnYL.jpeg", "https://i.imgur.com/ytp4wjg.jpeg", "https://i.imgur.com/9Nz26Wg.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 8,
@@ -92,7 +99,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/hjCCy0Z", "https://imgur.com/52KaGP1", "https://imgur.com/xVd4a6l", "https://imgur.com/bZFmD56"]
+  "photos": ["https://i.imgur.com/hjCCy0Z.jpeg", "https://i.imgur.com/52KaGP1.jpeg", "https://i.imgur.com/xVd4a6l.jpeg", "https://i.imgur.com/bZFmD56.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 9,
@@ -104,7 +112,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/K4ZoatZ", "https://imgur.com/NkIpJmS", "https://imgur.com/261pxD8"]
+  "photos": ["https://i.imgur.com/K4ZoatZ.jpeg", "https://i.imgur.com/NkIpJmS.jpeg", "https://i.imgur.com/261pxD8.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 10,
@@ -116,7 +125,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/d4MKXi9", "https://imgur.com/qIub14y", "https://imgur.com/0fCLgBZ", "https://imgur.com/A2vW28w"]
+  "photos": ["https://i.imgur.com/d4MKXi9.jpeg", "https://i.imgur.com/qIub14y.jpeg", "https://i.imgur.com/0fCLgBZ.jpeg", "https://i.imgur.com/A2vW28w.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 11,
@@ -128,7 +138,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/p8BcIJM", "https://imgur.com/GqJGxVt", "https://imgur.com/naduLBJ", "https://imgur.com/dIslONQ"]
+  "photos": ["https://i.imgur.com/p8BcIJM.jpeg", "https://i.imgur.com/GqJGxVt.jpeg", "https://i.imgur.com/naduLBJ.jpeg", "https://i.imgur.com/dIslONQ.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 12,
@@ -140,7 +151,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/7ToAkx3", "https://imgur.com/qgql8jB", "https://imgur.com/0UykTeq", "https://imgur.com/5IPq5Io"]
+  "photos": ["https://i.imgur.com/7ToAkx3.jpeg", "https://i.imgur.com/qgql8jB.jpeg", "https://i.imgur.com/0UykTeq.jpeg", "https://i.imgur.com/5IPq5Io.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 13,
@@ -152,7 +164,8 @@
   "genders": ["all gender"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/G3X0OPj", "https://imgur.com/2UXubB5"]
+  "photos": ["https://i.imgur.com/G3X0OPj.jpeg", "https://i.imgur.com/2UXubB5.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 14,
@@ -164,7 +177,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/nxIX5Qm", "https://imgur.com/Ezv8WBs", "https://imgur.com/1yszLbL", "https://imgur.com/8dRK6mD"]
+  "photos": ["https://i.imgur.com/nxIX5Qm.jpeg", "https://i.imgur.com/Ezv8WBs.jpeg", "https://i.imgur.com/1yszLbL.jpeg", "https://i.imgur.com/8dRK6mD.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 15,
@@ -176,7 +190,8 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/Sbq3shP", "https://imgur.com/y6RwgRM", "https://imgur.com/Jt1mfuW"]
+  "photos": ["https://i.imgur.com/Sbq3shP.jpeg", "https://i.imgur.com/y6RwgRM.jpeg", "https://i.imgur.com/Jt1mfuW.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 16,
@@ -188,7 +203,8 @@
   "genders": ["all gender"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/txYM33Z", "https://imgur.com/OKSYYNq", "https://imgur.com/FKQRaRM","https://imgur.com/22Cnfa6"]
+  "photos": ["https://i.imgur.com/txYM33Z.jpeg", "https://i.imgur.com/OKSYYNq.jpeg", "https://i.imgur.com/FKQRaRM.jpeg","https://i.imgur.com/22Cnfa6.jpeg"],
+  "reported": -1
 },
 {
   "bathroom_id": 17,
@@ -200,9 +216,73 @@
   "genders": ["male"],
   "rating": null,
   "number_ratings": 0,
-  "photos": ["https://imgur.com/afmJmhS", "https://imgur.com/8aJ9Zht", "https://imgur.com/istjfBu"]
+  "photos": ["https://i.imgur.com/afmJmhS.jpeg", "https://i.imgur.com/8aJ9Zht.jpeg", "https://i.imgur.com/istjfBu.jpeg"],
+  "reported": -1
+},
+{
+  "bathroom_id": 19,
+  "address": "Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.07309176015287,
+  "longitude": -118.4411037169115,
+  "building": "Haines Hall",
+  "floor": 1,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://i.imgur.com/X8MMqok.jpeg", "https://i.imgur.com/crIafyy.jpeg", "https://i.imgur.com/w3yXqUP.jpeg","https://i.imgur.com/K5ZlQzg.jpeg"],
+  "reported": -1
+},
+{
+  "bathroom_id": 20,
+  "address": "308 Charles E Young Dr N, Los Angeles, CA 90024",
+  "latitude": 34.07314889912212,
+  "longitude": -118.44308710341893,
+  "building": "Fowler Museum",
+  "floor": 1,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://i.imgur.com/SBjw4Nx.jpeg", "https://i.imgur.com/HyMV7Os.jpeg", "https://i.imgur.com/z1nodUS.jpeg","https://i.imgur.com/ZBG7dFB.jpeg"],
+  "reported": -1
+},
+{
+  "bathroom_id": 21,
+  "address": "337 Charles E Young Dr E, Los Angeles, CA 90095",
+  "latitude": 34.07437725691582,
+  "longitude": -118.4389086322548,
+  "building": "Public Affairs",
+  "floor": 2,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://i.imgur.com/tvpIAsg.jpeg", "https://i.imgur.com/gIvgwI6.jpeg", "https://i.imgur.com/Nz4mUxq.jpeg"],
+  "reported": -1
+},
+{
+  "bathroom_id": 22,
+  "address": "315 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.07277366095383,
+  "longitude": -118.43934026109058,
+  "building": "Dodd Hall",
+  "floor": 2,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://i.imgur.com/WU9mypG.jpeg", "https://i.imgur.com/4EOZ4Oe.jpeg", "https://i.imgur.com/oEa2Hji.jpeg", "https://i.imgur.com/kHvpMnF.jpeg"],
+  "reported": -1
+},
+{
+  "bathroom_id": 23,
+  "address": "11282 Portola Plaza, Los Angeles, CA 90095",
+  "latitude": 34.074328409686316,
+  "longitude": -118.44007380341894,
+  "building": "Bunche Hall",
+  "floor": 2,
+  "genders": ["male"],
+  "rating": null,
+  "number_ratings": 0,
+  "photos": ["https://i.imgur.com/ta9amtp.jpeg", "https://i.imgur.com/ouFdQwl.jpeg", "https://i.imgur.com/Ygrs81k.jpeg","https://i.imgur.com/wneAybp.jpeg"],
+  "reported": -1
 }
-
-
 ]
 
