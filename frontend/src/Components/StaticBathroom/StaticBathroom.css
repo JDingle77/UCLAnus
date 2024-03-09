@@ -1,0 +1,64 @@
+.search-result {
+  display: flex;
+  margin-left: 41px;
+}
+
+.search-result-card {
+  width: 500px;
+}
+
+.core-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.general-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: 60px;
+  width: 150px;
+}
+
+.general-info > * {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bathroom-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.bathroom-name {
+  text-align: center;
+  font-style: italic;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+
+.more-info {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating p {
+    margin-left: 4px;
+    margin-bottom: 0;
+}
