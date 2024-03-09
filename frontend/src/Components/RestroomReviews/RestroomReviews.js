@@ -11,7 +11,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
+import { faBookmark, faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import Form from "react-bootstrap/Form";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -41,6 +41,7 @@ function get_gender_string(genders) {
 function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
   const emptyStar = <FontAwesomeIcon icon={farStar} />;
+  const bookMark = <FontAwesomeIcon icon={faBookmark} />
   const [appearReview, setAppearReview] = useState(false);
     const [modalShow, setModalShow] = useState(false);
     const [ratingValue, setRatingValue] = useState(null);
@@ -151,6 +152,9 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
           onClick={writeReviewClicked}
         >
           <StarBorderIcon /> WRITE A REVIEW
+        </Button>
+        <Button variant="secondary">
+          {bookMark} ADD TO FAVORITES
         </Button>
         <Button variant="secondary" onClick={() => setModalShow(true)}>
           <CampaignOutlinedIcon /> REPORT

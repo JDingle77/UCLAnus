@@ -54,6 +54,12 @@
   border: 1px solid #d9e0e7;
 }
 
+.button-panel {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .more-info {
     display: flex;
     justify-content: flex-end;
