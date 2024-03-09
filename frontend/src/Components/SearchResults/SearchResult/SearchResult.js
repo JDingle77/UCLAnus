@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import WcIcon from "@mui/icons-material/Wc";
+import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 
 function get_gender_string(genders) {
   let str = "";
@@ -30,6 +31,7 @@ function get_gender_string(genders) {
 }
 function SearchResult(props) {
   const rightArrow = <FontAwesomeIcon icon={faArrowRight} />;
+  const bookMark = <FontAwesomeIcon icon={faBookmark} />;
   return (
     <div className="search-result-card">
       <div className="search-result">
@@ -68,9 +70,12 @@ function SearchResult(props) {
             <Badge bg="dark"> {props.distance} Feet</Badge>
           </p>
             <div className="more-info">
-		<a href={"review_page?_id=" + props.data.bathroom_id }>
-		    <Button variant="secondary">{rightArrow}</Button>
-		</a>
+    <div className="button-panel">
+      <Button variant="secondary">{bookMark}</Button>
+      <a href={"review_page?_id=" + props.data.bathroom_id }>
+          <Button variant="secondary">{rightArrow}</Button>
+      </a>
+    </div>
           </div>
         </div>
       </div>
