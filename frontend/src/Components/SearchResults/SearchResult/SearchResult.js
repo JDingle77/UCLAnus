@@ -69,7 +69,7 @@ function SearchResult(props) {
   return (
     <div className="search-result-card">
       <div className="search-result">
-        <div className="core-info">
+        <div className="core-info" style={{marginRight: "40px"}}>
           <img
             src={
               props.data.photos.length > 0
@@ -84,11 +84,11 @@ function SearchResult(props) {
               {props.data.building + " " + props.data.floor}
             </h2>
             <RestroomRating data={props.data} />
-            <p>
-              <img src={PinEmoji} alt="pin" />{" "}
-              <Badge bg="primary" style={{ justifyContent: "center" }}>
-                {props.data.address}
-              </Badge>
+              <p style={{display: "flex", marginTop: "10px"}} >
+		  <img style={{display: "inline-block"}} src={PinEmoji} alt="pin" />{" "}
+		  <Badge bg="primary" style={{ justifyContent: "center", display: "inline-block" }}>
+		      {props.data.address}
+		  </Badge>
             </p>
           </div>
         </div>

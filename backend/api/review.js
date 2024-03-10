@@ -45,7 +45,8 @@ const getReviewInfo = async (req, res) => {
 };
 
 const addReview = async (req, res) => {
-  const { bathroomId, userId, rating, description } = req.body;
+    let { bathroomId, userId, rating, description } = req.body;
+    userId = parseInt(userId, 10);
   console.log("Trying to add review");
   console.log("Adding bathroom: " + bathroomId);
   try {

@@ -1,8 +1,29 @@
 import "./ReviewsList.css";
 import Container from "react-bootstrap/esm/Container";
 import StaticReview from "../StaticReview/StaticReview";
-
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
+import axios from "axios";
 function ReviewsList() {
+    const [reviews, setReviews] = useState([]);
+    async function getReviews() {
+	let userId = Cookies.get("userId");
+	axios
+	    .get("http://localhost:4000/get-review?userId=" + userId)
+	    .then((response) => {
+		setReviews(response.data);
+	    })
+	    .catch((error) => {
+		console.error(error);
+	    });
+
+    }
+    
+    useEffect(() => {
+	getReviews();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
   return (
     <div className="reviews-list">
       <div className="reviews-header">
@@ -19,12 +40,10 @@ function ReviewsList() {
         </div>
       </div>
       <div className="reviews-wrap">
-        <div className="reviews">
-          <StaticReview/>
-          <StaticReview/>
-          <StaticReview/>
-          <StaticReview/>
-          <StaticReview/>
+          <div className="reviews">
+	  {reviews.map((review) => {
+	      return <StaticReview data={review}/>
+	  })}
         </div>
       </div>
     </div>

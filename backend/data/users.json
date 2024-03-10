@@ -19,5 +19,13 @@
       "name": "third tom",
       "profile_pic": null,
       "favorite_list": []
+  },
+
+    {
+    "user_id": 37492047,
+    "username": "enochxu",
+    "name": "enochxu",
+    "profile_pic": null,
+    "favorite_list": [ 1 ]
   }
 ]
