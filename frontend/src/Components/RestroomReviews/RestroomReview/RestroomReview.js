@@ -36,10 +36,11 @@ function RestroomReview(props) {
       setName(response.name);
     }
   }
-
+    
   useEffect(() => {
-    getName();
-  }, [getName]);
+      getName()
+      	// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Card>

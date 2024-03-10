@@ -63,14 +63,12 @@ function StaticReview(props) {
 	    setBathroomName(response.building + " " + response.floor);
 	}
     }
-    const useMountEffect = (fun) => useEffect(fun, [])
-
-    function mount() {
+    
+    useEffect(() => {
 	getName();
 	getBathroomName();
-    }
-    
-    useMountEffect(mount);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+    });
 
   return (
     <Card>

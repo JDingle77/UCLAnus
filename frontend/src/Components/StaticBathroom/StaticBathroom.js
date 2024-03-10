@@ -7,8 +7,6 @@ import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import WcIcon from "@mui/icons-material/Wc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import RestroomRating from "../RestroomRating/RestroomRating";
 
 function get_gender_string(genders) {

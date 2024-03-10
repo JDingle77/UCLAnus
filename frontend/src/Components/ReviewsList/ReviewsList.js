@@ -4,7 +4,6 @@ import StaticReview from "../StaticReview/StaticReview";
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 import axios from "axios";
-
 function ReviewsList() {
     const [reviews, setReviews] = useState([]);
     async function getReviews() {
@@ -19,12 +18,12 @@ function ReviewsList() {
 	    });
 
     }
-    const useMountEffect = (fun) => useEffect(fun, [])
-
-    function mount() {
+    
+    useEffect(() => {
 	getReviews();
-    }
-    useMountEffect(mount);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
   return (
     <div className="reviews-list">
       <div className="reviews-header">

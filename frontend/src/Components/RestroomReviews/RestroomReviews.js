@@ -179,15 +179,13 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
       return;
     });
   }
-
-    const useMountEffect = (fun) => useEffect(fun, [])
-
-    function mount() {
+   
+    useEffect(() => {
 	getInformation();
 	getFavorites();
-    }
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     
-    useMountEffect(mount);
     
   return (
     <div className="restroom-reviews">
