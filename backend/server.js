@@ -33,10 +33,18 @@ const startServer = async () => {
 
     // Use the connected database in your routes
     app.use("/", routes);
+    // Return a promise for server startup
+    return new Promise((resolve, reject) => {
+      const server = app.listen(port, () => {
+        console.log(`Server is running on port: ${port}`);
+        resolve(server);
+      });
 
-    // Start the server
-    app.listen(port, () => {
-      console.log(`Server is running on port: ${port}`);
+      // Handle server errors
+      server.on('error', (err) => {
+        console.error("Error starting the server:", err);
+        reject(err);
+      });
     });
   } catch (error) {
     console.error("Error setting up and starting the server:", error);
