@@ -79,7 +79,7 @@ function NavBarComponent() {
         <Navbar.Collapse className="justify-content-end">
           <Nav>
             <Nav.Item>
-              <Nav.Link href="/account">
+              <Nav.Link>
                 <Container>
                   <div className="top-rectangle"></div>
                   {userID !== "Temp" ? (
