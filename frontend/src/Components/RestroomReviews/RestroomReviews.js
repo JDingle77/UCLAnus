@@ -42,8 +42,10 @@ function get_gender_string(genders) {
   return str.substring(0, str.length - 2);
 }
 function changedDay(curDay) {
-  const today = new Date();
-  return today.getUTCDay() !== curDay;
+    const today = new Date();
+    console.log("Today: " + today.getUTCDay());
+    console.log("Day: " + curDay);
+  return today.getUTCDay()+1 !== curDay;
 }
 function RestroomReviews({ userLocation, dist_bathroom }) {
   const filledStar = <FontAwesomeIcon icon={fasStar} />;
@@ -178,11 +180,15 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
     });
   }
 
-  useEffect(() => {
-    getInformation();
-    getFavorites();
-  }, [getFavorites, getInformation]);
+    const useMountEffect = (fun) => useEffect(fun, [])
 
+    function mount() {
+	getInformation();
+	getFavorites();
+    }
+    
+    useMountEffect(mount);
+    
   return (
     <div className="restroom-reviews">
       <div className="images">

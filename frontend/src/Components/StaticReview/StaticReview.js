@@ -63,10 +63,14 @@ function StaticReview(props) {
 	    setBathroomName(response.building + " " + response.floor);
 	}
     }
-    useEffect(() => {
+    const useMountEffect = (fun) => useEffect(fun, [])
+
+    function mount() {
 	getName();
 	getBathroomName();
-    }, [getName, getBathroomName]);
+    }
+    
+    useMountEffect(mount);
 
   return (
     <Card>

@@ -17,7 +17,7 @@ function ReportModal(props) {
       body: JSON.stringify({
         userId: Cookies.get("userId"),
         bathroomId: props.data.bathroom_id,
-        reported: today.getUTCDay(),
+        reported: today.getUTCDay()+1,
       }),
       credentials: "include",
     })
@@ -28,7 +28,7 @@ function ReportModal(props) {
       .then((response) => {
         props.onHide();
       });
-    window.location.reload();
+      window.location.reload();
   }
 
   return (

@@ -19,9 +19,12 @@ function ReviewsList() {
 	    });
 
     }
-    useEffect(() => {
+    const useMountEffect = (fun) => useEffect(fun, [])
+
+    function mount() {
 	getReviews();
-    }, []);
+    }
+    useMountEffect(mount);
   return (
     <div className="reviews-list">
       <div className="reviews-header">
