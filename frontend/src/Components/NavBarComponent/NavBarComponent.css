@@ -51,7 +51,7 @@
 }
 
 .bottom-rectangle {
-  position: absolute;
+    position: absolute;
   width: 100%;
   left: 0%;
   right: 11.37%;
@@ -64,4 +64,5 @@
   color: black;
   text-decoration: none;
   background-color: none;
+  margin: 20px;
 }

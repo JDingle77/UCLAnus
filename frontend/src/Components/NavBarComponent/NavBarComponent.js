@@ -79,8 +79,8 @@ function NavBarComponent() {
         <Navbar.Collapse className="justify-content-end">
           <Nav>
             <Nav.Item>
-              <Nav.Link href="/account">
-                <Container>
+
+          <Container>
                   <div className="top-rectangle"></div>
                   {userID !== "Temp" ? (
                     // eslint-disable-next-line jsx-a11y/anchor-is-valid
@@ -97,7 +97,6 @@ function NavBarComponent() {
 
                   <div className="bottom-rectangle"></div>
                 </Container>
-              </Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
