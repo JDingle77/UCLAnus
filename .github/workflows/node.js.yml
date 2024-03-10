@@ -46,6 +46,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.6.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-replica-set: test-rs
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
