@@ -84,7 +84,7 @@ function NavBarComponent() {
                   <div className="top-rectangle"></div>
                   {userID !== "Temp" ? (
                     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                    <a className="my-account a-tag">MY ACCOUNT</a>
+                    <a href="/account" className="my-account a-tag">MY ACCOUNT</a>
                   ) : (
                     <a
                       id="github-sign-in"
