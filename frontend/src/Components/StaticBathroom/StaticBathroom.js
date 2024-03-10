@@ -1,16 +1,12 @@
 import React from "react";
 import "./StaticBathroom.css";
 import PinEmoji from "../Images/pin.png";
-import HandDryer from "../Images/air.png";
-import Accessible from "../Images/accessible.png";
-import Backpack from "../Images/backpack.png";
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import WcIcon from "@mui/icons-material/Wc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Rating from "react-rating";
 import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import RestroomRating from "../RestroomRating/RestroomRating";
@@ -34,8 +30,6 @@ function get_gender_string(genders) {
 
 function StaticBathroom(props) {
   const rightArrow = <FontAwesomeIcon icon={faArrowRight} />;
-  const filledStar = <FontAwesomeIcon icon={fasStar} />;
-  const emptyStar = <FontAwesomeIcon icon={farStar} />;
   return (
     <div className="search-result-card" style={{borderRight: "solid 1px grey"}}>
       <div className="search-result">

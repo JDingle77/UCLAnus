@@ -66,7 +66,7 @@ function StaticReview(props) {
     useEffect(() => {
 	getName();
 	getBathroomName();
-    }, []);
+    }, [getName, getBathroomName]);
 
   return (
     <Card>

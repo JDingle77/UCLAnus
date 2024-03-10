@@ -181,7 +181,7 @@ function RestroomReviews({ userLocation, dist_bathroom }) {
   useEffect(() => {
     getInformation();
     getFavorites();
-  }, []);
+  }, [getFavorites, getInformation]);
 
   return (
     <div className="restroom-reviews">
