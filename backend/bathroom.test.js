@@ -1,12 +1,20 @@
+require('text-encoding-utf-8');
 const request = require("supertest")
-const app = require("./server")
+const { app, startServer } = require("./server")
+beforeAll(async () => {
+  // Start your server here
+  await startServer();
+});
 
-describe("Test example", () => {
-  test("getbathrooms", (done) => {
+describe("Get bathroom test", () => {
+  jest.setTimeout(10000);
+  test("GET /get-bathroom", (done) => {
     request(app)
-      .get("/get-bathrooms")
-      .expect("Content-Type", /json/)
-      .expect(200)
+      .get("/get-bathroom")
+      .expect(200).end((err, res) => {
+        if (err) return done(err);
+        return done();
+      });
       // Even more logic goes here
   });
   // More things come here

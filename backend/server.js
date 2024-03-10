@@ -6,8 +6,8 @@ const cors = require("cors");
 const routes = require("./routes");
 const axios = require("axios");
 const { connectToDatabase, setup } = require("./mongo.js");
-
 let { clientID, clientSecret, apiToken } = require("./githubsso.json");
+
 
 app.use(express.json());
 app.use(cookieParser());
@@ -45,7 +45,9 @@ const startServer = async () => {
 };
 
 // Call the async function to start the server
-startServer();
+if (require.main === module) {
+  startServer();
+}
 
 app.post("/login", async function (req, res) {
   if (req.cookies && req.cookies.token && req.cookies.token !== "undefined") {
@@ -121,3 +123,5 @@ app.get("/get-userid", async function (req, res) {
     });
   }
 });
+
+module.exports = { app, startServer };
