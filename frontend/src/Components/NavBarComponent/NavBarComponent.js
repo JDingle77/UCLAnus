@@ -80,7 +80,11 @@ function NavBarComponent() {
           <Nav>
             <Nav.Item>
 
+
           <Container>
+
+
+                <Container>
                   <div className="top-rectangle"></div>
                   {userID !== "Temp" ? (
                     // eslint-disable-next-line jsx-a11y/anchor-is-valid
