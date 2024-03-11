@@ -79,25 +79,25 @@ function NavBarComponent() {
         <Navbar.Collapse className="justify-content-end">
           <Nav>
             <Nav.Item>
-              <Nav.Link href="/account">
-                <Container>
-                  <div className="top-rectangle"></div>
-                  {userID !== "Temp" ? (
-                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                    <a className="my-account a-tag">MY ACCOUNT</a>
-                  ) : (
-                    <a
-                      id="github-sign-in"
-                      className="a-tag"
-                      href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}
-                    >
-                      SIGN IN
-                    </a>
-                  )}
+              <Container>
+                <div className="top-rectangle"></div>
+                {userID !== "Temp" ? (
+                  // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                  <a href="/account" className="my-account a-tag">
+                    MY ACCOUNT
+                  </a>
+                ) : (
+                  <a
+                    id="github-sign-in"
+                    className="a-tag"
+                    href={`https://github.com/login/oauth/authorize?scope=${scopes}&client_id=${client_id}`}
+                  >
+                    SIGN IN
+                  </a>
+                )}
 
-                  <div className="bottom-rectangle"></div>
-                </Container>
-              </Nav.Link>
+                <div className="bottom-rectangle"></div>
+              </Container>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
