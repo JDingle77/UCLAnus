@@ -6,63 +6,51 @@ beforeAll(async () => {
 });
 
 describe("Get bathroom test", () => {
-  test("GET /get-bathroom", (done) => {
-    request(app)
+  test("GET /get-bathroom", async () => {
+    const response = await request(app)
       .get("/get-bathroom")
       .expect("Content-Type", /json/)
-      .expect(200).end((err, res) => {
-        if (err) return done(err);
-        return done();
-      });
+      .expect(200)
   });
 });
 
 describe("Get review success test", () => {
-  test("GET /get-review", (done) => {
+  test("GET /get-review", async () => {
     const queryParams = {
       bathroomId: '11',
       userId: '37492047'
     };
-    request(app)
+    const response = await request(app)
       .get("/get-review")
       .query(queryParams)
-      .expect(200).end((err, res) => {
-        if (err) return done(err);
-        return done();
-      });
+      .expect(200)
   });
 });
 
 describe("Get review non existent", () => {
-  test("GET /get-review", (done) => {
+  test("GET /get-review", async () => {
     const queryParams = {
       bathroomId: '8',
       userId: '37492047'
     };
-    request(app)
+    const response = await request(app)
       .get("/get-review")
       .query(queryParams)
-      .expect(404).end((err, res) => {
-        if (err) return done(err);
-        return done();
-      });
+      .expect(404)
   });
 });
 
 describe("add review test", () => {
-  test("POST /add-review", (done) => {
+  test("POST /add-review", async () => {
 
     const requestBody = {
       bathroomId: '9',
       userId: '37492047',
       rating: '3',
     };
-    request(app)
+    const response = await request(app)
       .post("/add-review")
       .send(requestBody)
-      .expect(201).end((err, res) => {
-        if (err) return done(err);
-        return done();
-      });
+      .expect(201)
   });
 });
