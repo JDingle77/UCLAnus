@@ -1,6 +1,15 @@
 // bathroom.js
 const { connectToDatabase } = require("../mongo.js");
 
+/**
+ * Retrieves bathroom information based on the provided bathroomId.
+ * If bathroomId is not provided, retrieves information for all bathrooms.
+ *
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @returns {void} - The function sends a response to the client.
+ */
+
 // Function to get bathroom information
 const getBathroomInfo = async (req, res) => {
   const bathroomId = parseInt(req.query.bathroomId, 10);
