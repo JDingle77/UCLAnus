@@ -45,6 +45,8 @@ const startServer = async () => {
         console.error("Error starting the server:", err);
         reject(err);
       });
+
+      return server
     });
   } catch (error) {
     console.error("Error setting up and starting the server:", error);

@@ -1,8 +1,13 @@
 require('text-encoding-utf-8');
 const request = require("supertest")
 const { app, startServer } = require("./server")
+let server;
 beforeAll(async () => {
-  await startServer();
+  server = await startServer();
+});
+
+afterAll(async () => {
+  server.close();
 });
 
 describe("Get bathroom test", () => {
