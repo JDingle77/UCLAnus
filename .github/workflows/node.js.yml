@@ -58,4 +58,4 @@ jobs:
         cache-dependency-path: '**/package-lock.json'
     - run: npm install
     - run: npm ci
-    - run: npm test 
+    - run: npm test -- --forceExit
