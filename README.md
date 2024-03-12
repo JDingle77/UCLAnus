@@ -27,3 +27,11 @@ In order to run the app with Google Maps API, you must place your Google API key
     "mapSignature": "placeholder"
 }
 ```
+
+## CI/CD
+There are two ways to automatically trigger a CI job.
+The script will be automatically run if:
+1. There is a new pr onto the main branch
+2. There is a new push onto the main
+
+We can also manually rerun a CI job. This is done on the github repo at: `Actions -> Node.js CI -> Your Job -> Re-run all jobs`.
